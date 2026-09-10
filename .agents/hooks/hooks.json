@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "AfterTool": [
+      {
+        "match": { "tool": "write_file", "pathGlob": "research/*.md" },
+        "run": "echo 'New/updated research file detected — verify research/_index.md has a matching row before continuing.'"
+      }
+    ]
+  }
+}
