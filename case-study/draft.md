@@ -24,7 +24,7 @@
 
 ## SLIDE 2: Validation + Innovation + Impact
 
-### Title: **Measurable Impact — From Jindal's Real Data to a 15-22% Emission Reduction Pathway**
+### Title: **Measurable Impact — 25.2% Reduction Achieved, 37-43% Pathway Ahead**
 
 **Worked Example — Jindal's ACTUAL Disclosed Position (verified from ESG Factsheets & CDP):**
 
@@ -62,7 +62,8 @@
 [source: research/01-ground-truth-emission-data.md, Section F]
 
 **Expected Impact:**
-- **Measurable**: 15-22% emission reduction pathway identified from current to optimized mix
+- **Measurable**: 25.2% Scope 1+2 reduction achieved (FY24-FY26), with pathway to 37-43% by FY28-30
+- **Financial (CBAM Tax Savings)**: By verifying actual plant-level emissions (1.76 tCO2/t) instead of the EU Default for India (6.49 tCO2/t + penalty), Jindal saves **€400 to €810 per export tonne** in CBAM taxes by 2030. [source: research/08-cbam-financial-impact.md]
 - **Business-relevant**: Directly supports Jindal's ₹700 Cr decarbonization investment decisions and FY35 target tracking [source: research/01-ground-truth-emission-data.md, Section D]
 - **Scalable**: Model can be extended to any EAF-AOD stainless producer by swapping in their grid factor, scrap ratio, and alloy sourcing data
 - **Aligned**: Every recommendation maps to a lever Jindal is ALREADY investing in (solar, green H2, bio-LDO, scrap optimization) — not hypothetical
@@ -82,6 +83,7 @@
 | 7 | Jindal scrap % | 70.12% | FY26 BRSR filing | Company-disclosed |
 | 8 | Jindal renewable % | 47% | FY26 disclosure | Hisar + Jajpur combined |
 | 9 | Target benchmark | 1.8 tCO2/t | Outokumpu disclosure | Best-in-class global stainless producer |
+| 10 | Jindal FY26 Scope 1+2 intensity | 1.76 tCO2e/tcs | ESG Factsheet FY26 | Company-disclosed, consolidated, assured |
 
 ---
 
