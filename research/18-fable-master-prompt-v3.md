@@ -136,7 +136,7 @@ We have ONE example of a dashboard design that caught our eye. This is **just an
 
 You decide how deep to go on each. You decide what matters most. You decide the structure. But here's what we need from you:
 
-1. **The 2-Slide Pitch Deck**: What goes on each slide? What's the framing? What's the hook? What data makes the judges say "wow"? Use markdown, tables, Mermaid diagrams — whatever communicates it best.
+1. **The 2-Slide Pitch Deck (ACTUAL PPT)**: Create the actual presentation file — not a markdown description of what should go on the slides, but the real, final, submission-ready PPT. Design it to be visually stunning, data-rich, and strategically devastating. This is what gets uploaded to Unstop.
 
 2. **The Dashboard Data Architecture**: What modules/widgets should the calculator have? How does the user interact with it? What data feeds each component? How does it connect to Jindal's actual ERP/sustainability systems? Design the logic, not just the layout.
 
