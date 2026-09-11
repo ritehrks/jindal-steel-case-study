@@ -182,7 +182,16 @@ Your slides must look like they came from a **top-3 consulting firm's final clie
 - **Premium aesthetic** — dark mode or clean corporate, sharp typography, consistent color system
 - **"Tip of the iceberg" effect** — the 2 slides make judges feel there's a 50-slide deck and a working prototype behind them
 
-**Do NOT make a generic template PPT.** Study winners. Match that bar. Exceed it.
+**LAYOUT SUGGESTIONS (just ideas — you choose):**
+Consider using structured frameworks that look dense and information-rich at first glance, but reveal clear logic when you actually read through them. Some approaches that work well in consulting-tier slides:
+- **Wireframe-style layouts** — structured grids, boxed sections, clear module boundaries. Looks like a product spec, not a PowerPoint.
+- **Minto Pyramid / MECE frameworks** — top-down logic flow that judges can follow in seconds
+- **Dashboard mockup embedded in the slide** — show the actual calculator UI as part of the slide itself
+- **Data tables with callout annotations** — hard numbers in a table, with arrows/highlights pointing to the "killer" insight
+- **Flow diagrams / process maps** — show the EAF→AOD→Rolling→CBAM chain visually
+- **Before/After or Baseline/Optimized split** — left side shows current state, right side shows what the calculator achieves
+
+The key: **first impression = "wow, this is dense and serious"** → **second look = "oh, this is actually really clear and well-structured."** That's the sweet spot.
 
 ### Deliverable 2: The Calculator Website (LIVE PROTOTYPE)
 Build an actual working carbon & energy calculator for stainless steel. This is the core of Problem Statement 3 — a tool where users adjust inputs (scrap %, energy source, alloy mix) and instantly see the effect on emissions per tonne. Use real data from our research files (emission factors, fuel factors, Jindal benchmarks). Deploy it so we have a live link.
