@@ -1,0 +1,242 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  :root{
+    --bg:#0e1218; --panel:#161c25; --panel2:#1e2631; --ink:#0a0d12;
+    --line:#333e4b; --line2:#28313d;
+    --w:#f2f5f8; --mut:#a4b0bd; --faint:#6b7683;
+    --amber:#f5a623; --teal:#2dd4bf; --red:#e85d5d; --green:#5dc986; --blue:#5b9bee;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1280px;height:720px;background:var(--bg);font-family:'Segoe UI',system-ui,sans-serif;color:var(--w);overflow:hidden}
+  .slide{width:1280px;height:720px;padding:16px 22px 12px;display:flex;flex-direction:column;gap:9px;position:relative}
+  .slide:before{content:'';position:absolute;inset:0;background:
+    radial-gradient(900px 300px at 8% -5%,rgba(245,166,35,.05),transparent 60%),
+    radial-gradient(700px 300px at 95% 110%,rgba(45,212,191,.04),transparent 60%);pointer-events:none}
+  /* header */
+  .hdr{display:flex;justify-content:space-between;align-items:flex-start}
+  h1{font-size:25px;line-height:1.14;font-weight:800;letter-spacing:-.2px}
+  h1 .b{color:var(--amber)}
+  .sub{margin-top:5px;font-size:11.5px;color:var(--mut);letter-spacing:.1px}
+  .sub b{color:var(--teal);font-weight:600}
+  .meta{border:1px solid var(--line);border-radius:4px;padding:7px 11px;font-size:9px;line-height:1.55;letter-spacing:.4px;white-space:nowrap;background:rgba(10,13,18,.5)}
+  .meta .a{color:var(--amber);font-weight:700}.meta .t{color:var(--teal);font-weight:700}.meta .m{color:var(--mut)}
+  /* modules */
+  .mod{border:1px solid var(--line);border-radius:5px;background:var(--panel);display:flex;flex-direction:column;min-height:0}
+  .mh{display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line2);padding:0 10px 0 0;height:26px;flex:none}
+  .mn{width:34px;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--ink);border-radius:4px 0 0 0}
+  .mt{font-weight:700;font-size:12.5px;letter-spacing:.3px}
+  .ms{font-size:9.5px;color:var(--faint);margin-left:auto;letter-spacing:.3px}
+  .mb{padding:8px 10px;flex:1;min-height:0}
+  /* chain */
+  .chain{display:flex;gap:8px}
+  .stage{flex:1;min-width:0}
+  .chev{height:26px;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;letter-spacing:.5px;background:var(--panel2);
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%);border-top:1px solid}
+  .ann{margin-top:5px;font-size:9px;line-height:1.4;color:var(--mut)}
+  .tag{font-weight:800;margin-right:4px}
+  /* mid band */
+  .band{display:flex;gap:10px;flex:1;min-height:0}
+  /* gaps */
+  .gap{display:flex;gap:8px;margin-bottom:8px}
+  .gbar{width:3px;border-radius:2px;background:var(--red);flex:none}
+  .gap h4{font-size:10.8px;font-weight:700;margin-bottom:2px}
+  .gap p{font-size:9.4px;line-height:1.38;color:var(--mut)}
+  .ev{border-top:1px solid var(--line2);padding-top:6px;font-size:8.8px;color:var(--faint);font-style:italic}
+  /* product mockup */
+  .mock{background:var(--ink);border:1px solid var(--line2);border-radius:5px;height:100%;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+  .mrow{display:flex;gap:14px;flex:1}
+  .sliders{width:180px;flex:none;display:flex;flex-direction:column;justify-content:space-between}
+  .sl .lab{display:flex;justify-content:space-between;font-size:9px;color:var(--mut);margin-bottom:3px}
+  .sl .lab b{color:var(--w);font-size:9.5px}
+  .track{position:relative;height:4px;border-radius:2px;background:var(--line2)}
+  .fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px}
+  .knob{position:absolute;top:-3px;width:9px;height:10px;border-radius:2px;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.6)}
+  .capmark{position:absolute;top:-3px;width:2px;height:10px;background:var(--red)}
+  .warn{font-size:8.6px;color:var(--red);font-weight:700;margin-top:5px}
+  .presets{font-size:8.6px;color:var(--mut)}
+  .presets b{color:var(--teal)}
+  .gaugecard{flex:1;display:flex;flex-direction:column;gap:6px}
+  .gauge{border:1px solid var(--teal);border-radius:6px;background:var(--panel2);padding:8px 12px 6px;display:flex;align-items:center;gap:14px}
+  .garc{flex:none}
+  .gval{font-size:44px;font-weight:800;color:var(--teal);line-height:.95;letter-spacing:-1px}
+  .gunit{font-size:10px;color:var(--mut)}
+  .gsub{font-size:9.5px;color:var(--mut);margin-top:3px}
+  .gsub b{color:var(--w)} .gsub .t{color:var(--amber);font-weight:700}
+  .sens .st{font-size:9px;font-weight:700;color:var(--mut);letter-spacing:.5px;margin-bottom:4px}
+  .srow{display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:9px}
+  .srow .sl2{width:78px;color:var(--w);flex:none}
+  .sbar{height:8px;border-radius:2px}
+  .sval{font-weight:800;font-size:9.5px}
+  .export{background:var(--panel2);border-radius:4px;padding:5px 10px;font-size:9.4px;color:var(--mut);flex:none}
+  .export b{color:var(--amber)}
+  /* matrix */
+  table.mx{border-collapse:collapse;width:100%;font-size:9.3px}
+  .mx th{background:var(--ink);color:var(--mut);font-size:8.6px;font-weight:700;padding:4px 6px;text-align:center;letter-spacing:.3px}
+  .mx th:first-child{text-align:left}
+  .mx td{border-top:1px solid var(--line2);padding:4.2px 6px;color:var(--w)}
+  .mx td.c{text-align:center;font-weight:800}
+  .mx tr td:last-child{background:rgba(93,201,134,.10)}
+  .yes{color:var(--green)}.no{color:#525e6b}.part{color:var(--amber)}
+  .pos{margin-top:7px;font-size:9.6px;color:var(--mut)}
+  .pos b{color:var(--w)}
+  /* spec band */
+  .eq{font-size:12px;margin-bottom:7px;color:var(--mut)}
+  .eq b{font-size:12.5px}
+  .eq .s1{color:var(--amber)}.eq .s2{color:var(--teal)}.eq .s3{color:var(--red)}.eq .w{color:var(--w)}
+  .eq .st2{font-size:9.5px;color:var(--faint);font-style:italic}
+  .arch{display:flex;gap:16px;align-items:stretch}
+  .layer{flex:1;border:1px solid;border-radius:5px;background:var(--panel2);padding:5px 9px;position:relative}
+  .layer h5{font-size:9.5px;font-weight:800;letter-spacing:.6px;margin-bottom:2px}
+  .layer p{font-size:8.8px;line-height:1.35;color:var(--w)}
+  .layer:after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--line);font-size:14px;font-weight:800}
+  .layer:last-child:after{content:''}
+  /* footer */
+  .foot{border:1px solid var(--line);border-radius:4px;background:var(--ink);padding:5px 12px;font-size:8.8px;color:var(--mut);flex:none}
+  .foot b{color:var(--amber);letter-spacing:.5px}
+  .foot .w2{color:var(--w)}
+</style></head><body><div class="slide">
+
+  <div class="hdr">
+    <div>
+      <h1>60–80% of stainless steel’s carbon is invisible to every existing tool —<br>
+      <span class="b">StainlessCarbon™</span> is the first calculator built to see it</h1>
+      <div class="sub"><b>Stainless alloy chain (FeCr + Ni)</b> · India’s real grid &amp; captive-coal economics · metallurgical guardrails · every tonne priced in CBAM euros</div>
+    </div>
+    <div class="meta">
+      <span class="a">JINDAL STAINLESS · PROBLEM STATEMENT 3</span><br>
+      <span class="m">ROUND 1 EXECUTIVE SUMMARY · 11 SEP 2026</span><br>
+      <span class="t">TEAM: [ADD NAME] · LIVE TOOL: [ADD LINK]</span><br>
+      <span class="m">BOUNDARY: S1+S2+S3 · ISSF-ALIGNED</span>
+    </div>
+  </div>
+
+  <!-- 01 CHAIN -->
+  <div class="mod" style="flex:none">
+    <div class="mh"><div class="mn" style="background:var(--amber)">01</div>
+      <div class="mt">THE PHYSICAL → REGULATORY CHAIN</div>
+      <div class="ms">where CO₂ enters each tonne, and where the EU prices it · fig 1.1</div></div>
+    <div class="mb"><div class="chain">
+      <div class="stage"><div class="chev" style="border-color:var(--red)">CHARGE MAKE-UP</div>
+        <div class="ann"><span class="tag" style="color:var(--red)">S3</span>scrap 70% (cap 80%) · FeCr 5.4–5.9<br>NPI 60–85 tCO₂/t contained Ni</div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--teal)">EAF MELT</div>
+        <div class="ann"><span class="tag" style="color:var(--teal)">S2</span>400–600 kWh/t melt<br>grid 0.710 · captive 1.045</div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--amber)">AOD REFINE</div>
+        <div class="ann"><span class="tag" style="color:var(--amber)">S1</span>O₂/Ar decarburization<br>process CO₂ (unavoidable)</div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--amber)">CAST + REHEAT</div>
+        <div class="ann"><span class="tag" style="color:var(--amber)">S1</span>FO/LSHS 71.9 gCO₂/MJ<br>→ NG −31% · Bio-LDO ≈ 0</div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--amber)">ROLL + FINISH</div>
+        <div class="ann"><span class="tag" style="color:var(--amber)">S1</span>anneal · pickle · BA lines<br>propane → green H₂</div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--green)">MILL GATE</div>
+        <div class="ann"><span class="tag" style="color:var(--green)">KPI</span>S1+2 = <b style="color:#fff">1.76</b> tCO₂e/tcs<br>cradle-to-gate <b style="color:#fff">3.03</b></div></div>
+      <div class="stage"><div class="chev" style="border-color:var(--blue)">EU BORDER</div>
+        <div class="ann"><span class="tag" style="color:var(--blue)">€</span>default 8.44 → <b style="color:var(--red)">€446/t</b><br>verified 0.9–1.4 → <b style="color:var(--green)">€48–74</b></div></div>
+    </div></div>
+  </div>
+
+  <!-- BAND -->
+  <div class="band">
+    <!-- 02 gaps -->
+    <div class="mod" style="width:305px;flex:none">
+      <div class="mh"><div class="mn" style="background:var(--red)">02</div>
+        <div class="mt">FOUR STRUCTURAL GAPS</div><div class="ms">in every tool</div></div>
+      <div class="mb" style="display:flex;flex-direction:column">
+        <div class="gap"><div class="gbar"></div><div><h4>G1 · Alloy blindspot</h4>
+          <p>Ferrochrome + nickel drive the stainless footprint, yet carbon-steel tools model 0% of the alloy chain.</p></div></div>
+        <div class="gap"><div class="gbar"></div><div><h4>G2 · India blindspot</h4>
+          <p>Western tools assume 0.2–0.4 t/MWh grids; India’s reality is 2–5× dirtier power (CEA v21.0).</p></div></div>
+        <div class="gap"><div class="gbar"></div><div><h4>G3 · Feasibility blindspot</h4>
+          <p>Sliders to 100% scrap ignore Cu/Sn tramp hot-shortness and India’s 23–25% scrap pool → real cap ~80%.</p></div></div>
+        <div class="gap"><div class="gbar"></div><div><h4>G4 · Finance blindspot</h4>
+          <p>No tool prices the tonne at the EU border — a €372–398/t default-vs-verified swing by 2030.</p></div></div>
+        <div class="ev" style="margin-top:auto">Evidence: UX teardown of Primetals CO₂ Calculator &amp; SSAB EcoUpgraded — 5 gaps documented (research file 07).</div>
+      </div>
+    </div>
+
+    <!-- 03 product -->
+    <div class="mod" style="flex:1">
+      <div class="mh"><div class="mn" style="background:var(--teal)">03</div>
+        <div class="mt">THE PRODUCT — LIVE CALCULATOR</div>
+        <div class="ms">4 levers · instant CO₂/t · optimizer · fig 1.2</div></div>
+      <div class="mb"><div class="mock">
+        <div class="mrow">
+          <div class="sliders">
+            <div class="sl"><div class="lab"><span>Scrap charge</span><b>70%</b></div>
+              <div class="track"><div class="fill" style="width:70%;background:var(--teal)"></div><div class="capmark" style="left:80%"></div><div class="knob" style="left:calc(70% - 4px)"></div></div></div>
+            <div class="sl"><div class="lab"><span>Ni source: scrap ↔ NPI</span><b>60%</b></div>
+              <div class="track"><div class="fill" style="width:60%;background:var(--teal)"></div><div class="knob" style="left:calc(60% - 4px)"></div></div></div>
+            <div class="sl"><div class="lab"><span>Renewable electricity</span><b>47%</b></div>
+              <div class="track"><div class="fill" style="width:47%;background:var(--amber)"></div><div class="knob" style="left:calc(47% - 4px)"></div></div></div>
+            <div class="sl"><div class="lab"><span>Clean fuel (H₂ · Bio-LDO)</span><b>30%</b></div>
+              <div class="track"><div class="fill" style="width:30%;background:var(--amber)"></div><div class="knob" style="left:calc(30% - 4px)"></div></div></div>
+            <div>
+              <div class="warn">⚠ 80% hard cap — Cu/Sn tramp guardrail</div>
+              <div class="presets">Presets: <b>FY26 Actual</b> · FY35 Target · Max-Green</div>
+            </div>
+          </div>
+          <div class="gaugecard">
+            <div class="gauge">
+              <svg class="garc" width="86" height="60" viewBox="0 0 86 60">
+                <path d="M 8 54 A 38 38 0 1 1 78 54" fill="none" stroke="#28313d" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 8 54 A 38 38 0 1 1 78 54" fill="none" stroke="#2dd4bf" stroke-width="7" stroke-linecap="round"
+                      stroke-dasharray="119.4" stroke-dashoffset="47.7"/>
+                <circle cx="43" cy="50" r="3" fill="#2dd4bf"/>
+                <text x="43" y="40" text-anchor="middle" fill="#a4b0bd" font-size="8" font-family="Segoe UI">S1+2</text>
+              </svg>
+              <div>
+                <div style="font-size:9px;font-weight:700;color:var(--mut);letter-spacing:.6px">LIVE INTENSITY — SCOPE 1+2</div>
+                <div><span class="gval">1.76</span> <span class="gunit">tCO₂e/tcs</span></div>
+                <div class="gsub">cradle-to-gate <b>3.03</b> · FY35 target <span class="t">0.99</span></div>
+              </div>
+            </div>
+            <div class="sens">
+              <div class="st">WHICH LEVER MOVES CO₂ MOST (Δ tCO₂/t)</div>
+              <div class="srow"><span class="sl2">scrap +8pp</span><div class="sbar" style="width:150px;background:var(--teal)"></div><span class="sval" style="color:var(--teal)">−0.32</span></div>
+              <div class="srow"><span class="sl2">RE 47→65%</span><div class="sbar" style="width:131px;background:var(--amber)"></div><span class="sval" style="color:var(--amber)">−0.28</span></div>
+              <div class="srow"><span class="sl2">green H₂/bio</span><div class="sbar" style="width:70px;background:var(--green)"></div><span class="sval" style="color:var(--green)">−0.15</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="export">Every run exports a per-tonne <b>CBAM invoice + DPP/EPD-ready record</b> — audit-grade MRV, not an indicative widget</div>
+      </div></div>
+    </div>
+
+    <!-- 04 matrix -->
+    <div class="mod" style="width:300px;flex:none">
+      <div class="mh"><div class="mn" style="background:var(--green)">04</div>
+        <div class="mt">COMPETITIVE MATRIX</div><div class="ms">fig 1.3</div></div>
+      <div class="mb">
+        <table class="mx">
+          <tr><th>capability</th><th>Primetals</th><th>SSAB</th><th>Ours</th></tr>
+          <tr><td>Alloy-chain emissions</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>India grid + captive coal</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>Feasibility guardrails</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>Audited company anchor</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>CBAM €/t + escalator</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>Constrained optimizer</td><td class="c part">△</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+          <tr><td>DPP/EPD export path</td><td class="c no">✗</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+        </table>
+        <div class="pos"><b>“SSAB simplicity × Primetals depth”</b><br>— rebuilt for stainless metallurgy and India.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 spec -->
+  <div class="mod" style="flex:none">
+    <div class="mh"><div class="mn" style="background:var(--blue)">05</div>
+      <div class="mt">EMISSIONS MODEL SPEC</div>
+      <div class="ms">ISSF/worldstainless-aligned · dual-output · validated within ~5% of audited data · spec 2.1</div></div>
+    <div class="mb">
+      <div class="eq"><b class="w">E(CO₂/t) = </b><b class="s1">S1</b>[fuels · AOD · reductants] &nbsp;+&nbsp; <b class="s2">S2</b>[(1−RE%) · (grid | captive) · kWh] &nbsp;+&nbsp; <b class="s3">S3</b>[(1−scrap%) · Σ mᵢ·EFᵢ] &nbsp;&nbsp;<span class="st2">s.t. scrap ≤ 80% · Cu/Sn bounds</span></div>
+      <div class="arch">
+        <div class="layer" style="border-color:var(--blue)"><h5 style="color:var(--blue)">DATA</h5>
+          <p>19-file base — CEA v21.0 · BEE PAT · IPCC 2006 · ICDA FeCr LCA · ISSF benchmarks · JSL audited BRSR/CDP/ESG · EU regulations</p></div>
+        <div class="layer" style="border-color:var(--amber)"><h5 style="color:var(--amber)">ENGINE</h5>
+          <p>grade-wise charge chemistry (304/316/430/2205) · constrained optimizer · dual ISSF output (recycled-content + EoL credit) · CBAM escalator 2026–30</p></div>
+        <div class="layer" style="border-color:var(--teal)"><h5 style="color:var(--teal)">INTERFACE</h5>
+          <p>4 levers · live gauge · baseline-vs-target compare · per-tonne CBAM invoice · DPP/EPD export</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><b>RESEARCH BASE</b>&nbsp; <span class="w2">19 deep-dive files · 40+ primary sources · locked canonical model</span> &nbsp;|&nbsp; CEA v21.0 · BEE PAT · IPCC 2006 · worldstainless/ISSF · ICDA · EU Regs 2023/956 · 2025/2620-21 · JSL BRSR/CDP/ESG FY22–26 · Goldman Sachs · ICRA · CRISIL</div>
+
+</div></body></html>

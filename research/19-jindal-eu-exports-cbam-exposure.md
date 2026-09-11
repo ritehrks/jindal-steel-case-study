@@ -9,6 +9,8 @@ used_in: []
 
 # Strategic Analysis of Jindal Stainless Limited: Export Dynamics, EU Trade Policies, and CBAM Exposure
 
+> **⚠️ RESOLVED (see `research/22-canonical-model-v1.md`, Ruling 1):** This file is CANONICAL for export volumes, Iberjindal, safeguard quotas, financials, and analyst quotes. Its **CBAM § 6 is superseded**: the "0.65 tCO2e/t → €22/t by 2030" figure uses Hisar-only Scope 1+2, but CBAM counts company-wide DIRECT emissions (~1.5 conservative / 0.9–1.1 realistic). Use the canonical headline instead: verified data saves **€370–400/t by 2030 = €22–32M (₹200–290 Cr)/yr** on 60–80K t EU exports.
+
 ## Executive Summary
 The global stainless steel industry is navigating a profound structural realignment, driven by evolving geopolitical trade architectures, decarbonization mandates, and shifting demand profiles. For Indian manufacturers, the EU has historically served as a critical, high-margin export destination. However, safeguard quotas, anti-dumping duties (ADD), and the CBAM have fundamentally altered the economic calculus of exporting to the EU27.
 

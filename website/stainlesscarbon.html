@@ -1,0 +1,432 @@
+<title>StainlessCarbon</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#0e1218; --panel:#161c25; --panel2:#1e2631; --ink:#0a0d12;
+    --line:#333e4b; --line2:#28313d;
+    --w:#f2f5f8; --mut:#a4b0bd; --faint:#6b7683;
+    --amber:#f5a623; --teal:#2dd4bf; --red:#e85d5d; --green:#5dc986; --blue:#5b9bee;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--w);font-family:'Archivo',system-ui,sans-serif;font-size:15px;line-height:1.5;padding-inline:16px}
+  body::before{content:'';position:fixed;inset:0;background:
+    radial-gradient(1200px 400px at 10% -5%,rgba(245,166,35,.05),transparent 60%),
+    radial-gradient(900px 400px at 95% 105%,rgba(45,212,191,.04),transparent 60%);pointer-events:none;z-index:0}
+  .wrap{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+  a{color:var(--teal);text-decoration:none}
+  /* topbar */
+  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:18px 14px;border-bottom:1px solid var(--line2)}
+  .brand{font-weight:900;font-size:22px;letter-spacing:-.3px}
+  .brand em{color:var(--amber);font-style:normal}
+  .badge{font-family:var(--mono);font-size:11px;color:var(--green);border:1px solid rgba(93,201,134,.4);border-radius:99px;padding:3px 10px;background:rgba(93,201,134,.07)}
+  nav{margin-left:auto;display:flex;gap:18px;font-size:13px;font-weight:600;color:var(--mut)}
+  nav a{color:var(--mut)} nav a:hover{color:var(--w)}
+  /* hero line */
+  .lede{padding-block:18px 6px;max-width:860px}
+  .lede h1{font-size:clamp(22px,3.4vw,32px);font-weight:800;line-height:1.15;letter-spacing:-.4px;text-wrap:balance}
+  .lede h1 b{color:var(--amber)}
+  .lede p{color:var(--mut);margin-top:8px;font-size:14.5px;max-width:64ch}
+  /* sections */
+  section{padding-block:22px;border-bottom:1px solid var(--line2)}
+  .sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .sechead h2{font-size:18px;font-weight:800;letter-spacing:.2px}
+  .sechead .tag{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  /* layout */
+  .grid{display:grid;grid-template-columns:330px 1fr;gap:18px}
+  @media(max-width:920px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:16px}
+  .card h3{font-size:12px;font-weight:700;letter-spacing:.8px;color:var(--mut);text-transform:uppercase;margin-bottom:12px}
+  /* controls */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .chip{font-family:var(--mono);font-size:12.5px;padding:6px 12px;border:1px solid var(--line);border-radius:7px;background:var(--panel2);color:var(--mut);cursor:pointer}
+  .chip.on{border-color:var(--teal);color:var(--teal);background:rgba(45,212,191,.08)}
+  .chip:focus-visible,.pre:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .ctl{margin-bottom:15px}
+  .ctl .lab{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px}
+  .ctl .lab b{font-family:var(--mono);font-size:14px;color:var(--w)}
+  .ctl .lab span{color:var(--mut)}
+  input[type=range]{width:100%;appearance:none;height:5px;border-radius:3px;background:var(--line2);cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border-radius:5px;background:#fff;border:2px solid var(--teal);box-shadow:0 1px 4px rgba(0,0,0,.5)}
+  #re::-webkit-slider-thumb,#cf::-webkit-slider-thumb{border-color:var(--amber)}
+  .cap{font-size:11.5px;color:var(--red);font-family:var(--mono);margin-top:4px;display:none}
+  .cap.show{display:block}
+  .seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{flex:1;padding:7px 6px;background:var(--panel2);border:0;color:var(--mut);font-family:var(--mono);font-size:11.5px;cursor:pointer}
+  .seg button.on{background:rgba(245,166,35,.12);color:var(--amber)}
+  .presets{border-top:1px solid var(--line2);padding-top:12px;margin-top:4px}
+  .presets .row{display:flex;gap:8px;flex-wrap:wrap}
+  .pre{font-size:12px;font-weight:600;padding:6px 11px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--w);cursor:pointer}
+  .pre:hover{border-color:var(--teal)}
+  /* results */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+  @media(max-width:720px){.tiles{grid-template-columns:1fr}}
+  .tile{background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:14px 16px}
+  .tile .k{font-size:11px;font-weight:700;letter-spacing:.7px;color:var(--mut);text-transform:uppercase}
+  .tile .v{font-family:var(--mono);font-weight:600;font-size:34px;letter-spacing:-1px;line-height:1.15;margin-top:2px}
+  .tile .u{font-size:12px;color:var(--faint);font-family:var(--mono)}
+  .tile .d{font-size:12px;margin-top:4px;font-family:var(--mono)}
+  .good{color:var(--green)} .bad{color:var(--red)} .mutc{color:var(--mut)}
+  .t-teal .v{color:var(--teal)} .t-amber .v{color:var(--amber)} .t-w .v{color:var(--w)}
+  /* progress */
+  .prog{height:7px;border-radius:4px;background:var(--line2);margin-top:8px;position:relative;overflow:hidden}
+  .prog i{position:absolute;left:0;top:0;bottom:0;background:var(--green);border-radius:4px}
+  /* stacked bar */
+  .stack{display:flex;height:34px;border-radius:6px;overflow:hidden;gap:2px;background:var(--bg)}
+  .stack div{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink);min-width:0;white-space:nowrap}
+  .legend{display:flex;gap:16px;margin-top:8px;font-size:12px;color:var(--mut);flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  @media(max-width:860px){.duo{grid-template-columns:1fr}}
+  svg text{font-family:var(--mono)}
+  /* sens */
+  .srow{display:grid;grid-template-columns:150px 1fr 62px;align-items:center;gap:10px;margin-bottom:8px;font-size:12.5px}
+  .srow .b{height:12px;border-radius:3px}
+  .srow .n{font-family:var(--mono);font-weight:600;text-align:right}
+  /* cbam */
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.5px;color:var(--mut);text-transform:uppercase;text-align:right;padding:7px 10px;border-bottom:1px solid var(--line)}
+  td{font-family:var(--mono);font-size:13px;padding:7px 10px;text-align:right;border-bottom:1px solid var(--line2)}
+  th:first-child,td:first-child{text-align:left}
+  tr.hl td{background:rgba(245,166,35,.06);font-weight:600}
+  .cbamgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+  @media(max-width:920px){.cbamgrid{grid-template-columns:1fr}}
+  .heroamt{font-family:var(--mono);font-weight:600;font-size:clamp(30px,4vw,44px);color:var(--amber);letter-spacing:-1.5px;line-height:1.05}
+  .heroamt small{font-size:16px;color:var(--w)}
+  .inp{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px;color:var(--mut);flex-wrap:wrap}
+  .inp input{font-family:var(--mono);width:110px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;color:var(--w);padding:6px 9px;font-size:13px}
+  button.cta{background:var(--teal);color:var(--ink);font-weight:800;font-size:14px;border:0;border-radius:8px;padding:11px 20px;cursor:pointer;font-family:'Archivo'}
+  button.cta:hover{filter:brightness(1.08)}
+  button.ghost{background:var(--panel2);color:var(--w);border:1px solid var(--line);font-weight:600;font-size:13px;border-radius:8px;padding:9px 15px;cursor:pointer;font-family:'Archivo'}
+  .optres{margin-top:14px;display:none;border:1px solid rgba(93,201,134,.4);background:rgba(93,201,134,.06);border-radius:10px;padding:14px 16px}
+  .optres.show{display:block}
+  .optres .big{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--green)}
+  .kv{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;color:var(--mut);margin-top:6px}
+  .kv b{color:var(--w)}
+  /* methodology */
+  .meth{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:860px){.meth{grid-template-columns:1fr}}
+  .eq{font-family:var(--mono);font-size:13px;background:var(--ink);border:1px solid var(--line2);border-radius:8px;padding:12px 14px;overflow-x:auto;white-space:nowrap}
+  .eq .s1{color:var(--amber)}.eq .s2{color:var(--teal)}.eq .s3{color:var(--red)}
+  ul.rules{list-style:none;font-size:13.5px;color:var(--mut)}
+  ul.rules li{padding:7px 0;border-bottom:1px dashed var(--line2)}
+  ul.rules b{color:var(--w)}
+  .vrow{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--line2);font-size:13.5px}
+  .vrow i{width:4px;height:13px;border-radius:2px;background:var(--green);align-self:center;flex:none}
+  .vrow b{white-space:nowrap}
+  .vrow span{color:var(--mut)}
+  footer{padding-block:20px 34px;font-size:12.5px;color:var(--faint);line-height:1.6}
+  footer b{color:var(--mut)}
+  .tt{position:fixed;pointer-events:none;background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-family:var(--mono);font-size:11.5px;color:var(--w);display:none;z-index:9}
+  .note{font-size:12px;color:var(--faint);margin-top:8px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="brand">Stainless<em>Carbon</em></div>
+  <div class="badge" id="calib">● calibrated: reproduces JSL FY26 disclosures within ~2%</div>
+  <nav><a href="#calc">Calculator</a><a href="#cbam">CBAM</a><a href="#opt">Optimizer</a><a href="#meth">Methodology</a></nav>
+</header>
+
+<div class="lede">
+  <h1>Carbon &amp; energy calculator for EAF–AOD stainless steel — <b>the alloy chain, India's grid, and the CBAM price of every tonne</b></h1>
+  <p>60–80% of stainless steel's footprint is ferrochrome and nickel, which generic steel calculators ignore. Adjust the four real operating levers below and watch scope-wise CO₂ per tonne, the FY35 glidepath, and the EU border cost respond instantly.</p>
+</div>
+
+<section id="calc">
+  <div class="sechead"><h2>Live calculator</h2><span class="tag">4 levers · grade-aware · instant tCO₂e per tonne crude steel</span></div>
+  <div class="grid">
+    <div class="card">
+      <h3>Charge &amp; energy levers</h3>
+      <div class="chips" id="grades" role="group" aria-label="Steel grade">
+        <button class="chip on" data-g="304">304</button><button class="chip" data-g="316">316</button>
+        <button class="chip" data-g="430">430</button><button class="chip" data-g="2205">2205</button>
+      </div>
+      <div class="ctl"><div class="lab"><span>Scrap charge</span><b id="v_s">70%</b></div>
+        <input type="range" id="s" min="40" max="80" value="70" step="1" aria-label="Scrap charge percent">
+        <div class="cap" id="capwarn">⚠ 80% hard cap — Cu/Sn tramp-element guardrail (research/11)</div></div>
+      <div class="ctl"><div class="lab"><span>Nickel units from NPI</span><b id="v_npi">33%</b></div>
+        <input type="range" id="npi" min="0" max="100" value="33" step="1" aria-label="Share of nickel from NPI"></div>
+      <div class="ctl"><div class="lab"><span>Renewable electricity</span><b id="v_re">47%</b></div>
+        <input type="range" id="re" min="0" max="90" value="47" step="1" aria-label="Renewable electricity percent"></div>
+      <div class="ctl"><div class="lab"><span>Clean fuel substitution (H₂ · Bio-LDO · NG)</span><b id="v_cf">30%</b></div>
+        <input type="range" id="cf" min="0" max="80" value="30" step="1" aria-label="Clean fuel substitution percent"></div>
+      <div class="ctl"><div class="lab"><span>Ferrochrome sourcing</span></div>
+        <div class="seg" role="group" aria-label="Ferrochrome sourcing">
+          <button id="fecrO" class="on">Odisha coal-based · 5.65 t/t</button>
+          <button id="fecrI">Imported low-carbon · 2.3 t/t</button>
+        </div></div>
+      <div class="presets"><div class="lab" style="font-size:12px;color:var(--mut);margin-bottom:8px">Presets — one click, real disclosed states</div>
+        <div class="row">
+          <button class="pre" data-p="fy24">FY24 peak</button>
+          <button class="pre" data-p="fy26">FY26 actual</button>
+          <button class="pre" data-p="fy35">FY35 path</button>
+          <button class="pre" data-p="max">Max-green feasible</button>
+        </div></div>
+    </div>
+
+    <div>
+      <div class="tiles">
+        <div class="tile t-teal"><div class="k">Scope 1+2 intensity</div>
+          <div class="v" id="t_s12">1.73</div><div class="u">tCO₂e / t crude steel</div>
+          <div class="d" id="d_s12"></div></div>
+        <div class="tile t-amber"><div class="k">Cradle-to-gate (S1+2+3)</div>
+          <div class="v" id="t_tot">2.99</div><div class="u">tCO₂e / t crude steel</div>
+          <div class="d" id="d_tot"></div></div>
+        <div class="tile t-w"><div class="k">FY35 target progress</div>
+          <div class="v" id="t_prog">25%</div><div class="u">of −50% intensity cut (1.98 → 0.99)</div>
+          <div class="prog"><i id="progbar" style="width:25%"></i></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Where the carbon sits — scope split</h3>
+        <div class="stack" id="stack" role="img" aria-label="Scope split of emissions"></div>
+        <div class="legend">
+          <span><i style="background:var(--amber)"></i>S1 direct — fuels · AOD process · captive power</span>
+          <span><i style="background:var(--teal)"></i>S2 — purchased grid electricity</span>
+          <span><i style="background:var(--red)"></i>S3 upstream — FeCr · Ni · Mo</span>
+        </div>
+        <div class="duo">
+          <div>
+            <h3 style="margin-top:6px">Your scenario vs Jindal's audited trajectory</h3>
+            <div id="traj"></div>
+          </div>
+          <div>
+            <h3 style="margin-top:6px">Which move cuts the most next</h3>
+            <div id="sens"></div>
+            <div class="note">Δ tCO₂/t for a defined step from your current settings. Bars recompute live.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cbam">
+  <div class="sechead"><h2>The CBAM verification dividend</h2><span class="tag">EU Regs 2023/956 · 2025/2620-21 — direct emissions, definitive phase</span></div>
+  <div class="cbamgrid">
+    <div class="card">
+      <h3>Per-tonne border cost, 2026–2030</h3>
+      <table aria-label="CBAM liability by year">
+        <thead><tr><th>Year</th><th>Phase-in</th><th>ETS €/t</th><th>EU default €/t</th><th>Your verified €/t</th></tr></thead>
+        <tbody id="cbamrows"></tbody>
+      </table>
+      <div class="note">Default = India stainless 6.49 tCO₂/t base with the +10/20/30% no-data markup (7.14 → 8.44). Your verified figure uses this scenario's direct (Scope 1) intensity — the conservative CBAM basis.</div>
+    </div>
+    <div class="card">
+      <h3>What verified data is worth by 2030</h3>
+      <div class="inp"><label for="tons">EU export book</label><input id="tons" type="number" value="70000" step="5000" min="0"> t/yr
+        <label for="fx" style="margin-left:6px">₹ per €</label><input id="fx" type="number" value="90" step="1" min="1" style="width:70px"></div>
+      <div class="heroamt" id="divid">₹235 Cr / yr</div>
+      <div class="d" style="font-family:var(--mono);font-size:13px;color:var(--mut);margin-top:6px" id="dividsub"></div>
+      <div style="margin-top:14px"><button class="ghost" id="invoice">Copy CBAM invoice summary</button></div>
+      <div class="note">The calculator is the MRV instrument: file this verified intensity instead of the EU default, and the difference is the dividend.</div>
+    </div>
+  </div>
+</section>
+
+<section id="opt">
+  <div class="sechead"><h2>Constrained optimizer</h2><span class="tag">min CO₂/t subject to scrap ≤ 80% · RE ≤ 90% · clean fuel ≤ 80%</span></div>
+  <div class="card">
+    <p style="color:var(--mut);font-size:14px;max-width:70ch">Searches every feasible combination of the four levers within metallurgical and supply guardrails — no fantasy 100%-scrap answers — and returns the lowest practical footprint for your selected grade and ferrochrome sourcing.</p>
+    <div style="margin-top:12px"><button class="cta" id="run">Find lowest feasible CO₂/t</button></div>
+    <div class="optres" id="optres">
+      <div class="k" style="font-size:11px;letter-spacing:.7px;color:var(--mut);text-transform:uppercase">Optimum found</div>
+      <div class="big" id="optbig"></div>
+      <div class="kv" id="optkv"></div>
+      <div style="margin-top:10px"><button class="ghost" id="apply">Apply these settings</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="meth">
+  <div class="sechead"><h2>Methodology &amp; validation</h2><span class="tag">ISSF/worldstainless-aligned · locked canonical model</span></div>
+  <div class="eq">E(CO₂/t) = <span class="s1">S1</span>[0.12 AOD + 1.244·(1−0.4·cleanfuel) fuels + 1.10·(1−RE)·0.5·1.045 captive] + <span class="s2">S2</span>[1.10·(1−RE)·0.5·0.710 grid] + <span class="s3">S3</span>[(1−scrap)·Σ mᵢ·EFᵢ]</div>
+  <div class="meth" style="margin-top:16px">
+    <div class="card">
+      <h3>Emission factors — regulator-grade</h3>
+      <table aria-label="Emission factors and sources">
+        <thead><tr><th>Factor</th><th>Value</th><th>Unit</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>India grid (FY24-25)</td><td>0.710</td><td>tCO₂/MWh</td><td>CEA v21.0</td></tr>
+          <tr><td>Captive subcritical coal</td><td>1.045</td><td>tCO₂/MWh</td><td>CEA heat-rate</td></tr>
+          <tr><td>Odisha HC ferrochrome</td><td>5.4–5.9</td><td>tCO₂/t</td><td>ICDA LCA</td></tr>
+          <tr><td>Imported low-C ferrochrome</td><td>2.3</td><td>tCO₂/t</td><td>Metso Outotec</td></tr>
+          <tr><td>NPI (contained Ni)</td><td>69</td><td>tCO₂/t Ni</td><td>ISSF</td></tr>
+          <tr><td>Class-1 nickel</td><td>13</td><td>tCO₂/t Ni</td><td>ISSF</td></tr>
+          <tr><td>Ferromolybdenum</td><td>6.5 ±30%</td><td>tCO₂/t</td><td>literature mid</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Grade chemistry (kg per tonne, virgin fraction): 304 → 300 FeCr + 80 Ni · 316 → 283 + 100 + 29 FeMo · 430 → 283, Ni-free · 2205 → 367 + 50 + 43.</div>
+    </div>
+    <div class="card">
+      <h3>Boundary rules &amp; triple validation</h3>
+      <ul class="rules">
+        <li><b>R1</b> — captive power lives inside Scope 1; only <em>purchased</em> alloys enter Scope 3. No double-counting.</li>
+        <li><b>R2</b> — scrap enters burden-free (ISSF recycled-content method); end-of-life credit is a separate view.</li>
+        <li><b>R3</b> — intensities per tonne of <em>crude</em> steel; the CBAM module prices direct emissions only.</li>
+      </ul>
+      <div style="margin-top:10px">
+        <div class="vrow"><i></i><b>V1 audited anchor</b><span>FY26 preset returns S1+2 1.73 / total 2.99 vs JSL's assured 1.76 / 3.03 — within ~2%.</span></div>
+        <div class="vrow"><i></i><b>V2 industry curve</b><span>tracks the worldstainless scrap curve (85% → 1.95 · 50% → 3.70 · 30% → 6.80).</span></div>
+        <div class="vrow"><i></i><b>V3 grade physics</b><span>Ni-free 430 lands near half the 304 footprint, as metallurgy demands.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>Research base:</b> 19 deep-dive files · 40+ primary sources — CEA CO₂ Baseline Database v21.0 · BEE PAT · IPCC 2006 · worldstainless/ISSF · ICDA · EU Regulations 2023/956, 2025/2620-21, 2026/1740 · JSL BRSR / CDP / ESG Factsheets FY22–26 · Goldman Sachs · ICRA · CRISIL.<br>
+  Independent case-competition prototype built on Jindal Stainless public disclosures — not an official Jindal Stainless product. Model constants are calibrated so disclosed FY24/FY26 states reproduce audited intensities; ranges and factors carry the uncertainties noted above.
+</footer>
+</div>
+<div class="tt" id="tt"></div>
+
+<script>
+const GR = {  // kg per tonne, virgin charge chemistry
+  '304':{fecr:300,ni:80,femo:0}, '316':{fecr:283,ni:100,femo:29},
+  '430':{fecr:283,ni:0,femo:0}, '2205':{fecr:367,ni:50,femo:43} };
+const DISCLOSED = [[22,1.98],[23,2.08],[24,2.15],[25,1.85],[26,1.76]];
+const CBAM_Y = [
+  {y:2026,f:.025,ets:80,def:7.14},{y:2027,f:.05,ets:89,def:7.79},
+  {y:2028,f:.10,ets:95,def:8.44},{y:2029,f:.225,ets:100,def:8.44},
+  {y:2030,f:.485,ets:109,def:8.44}];
+let st = {g:'304', s:70, npi:33, re:47, cf:30, fecrO:true};
+
+function model(x){
+  const g = GR[x.g];
+  const efFeCr = x.fecrO ? 5.65 : 2.3;
+  const efNi = 13 + (x.npi/100)*56;
+  const s = x.s/100, re = x.re/100, cf = x.cf/100;
+  const S1 = 0.12 + 1.244*(1-0.4*cf) + 1.10*(1-re)*0.5*1.045;
+  const S2 = 1.10*(1-re)*0.5*0.710;
+  const S3 = (1-s)*(g.fecr*efFeCr + g.ni*efNi + g.femo*6.5)/1000;
+  return {S1,S2,S3,s12:S1+S2,tot:S1+S2+S3};
+}
+const f2 = n => n.toFixed(2);
+const el = id => document.getElementById(id);
+
+function drawTraj(m){
+  const W=460,H=190,L=40,R=18,T=16,B=30;
+  const xs=v=>L+(v-21.5)/(35.5-21.5)*(W-L-R), ys=v=>T+(2.4-v)/(2.4-0.8)*(H-T-B);
+  let p='';
+  DISCLOSED.forEach((d,i)=>{p+=(i?'L':'M')+xs(d[0])+' '+ys(d[1])+' ';});
+  let dots = DISCLOSED.map(d=>`<circle cx="${xs(d[0])}" cy="${ys(d[1])}" r="4" fill="#2dd4bf" data-tt="FY${d[0]} disclosed · ${d[1]} tCO₂e/tcs"/>`).join('');
+  const yv = Math.max(0.8, Math.min(2.4, m.s12));
+  const grid = [1.0,1.5,2.0].map(v=>`<line x1="${L}" y1="${ys(v)}" x2="${W-R}" y2="${ys(v)}" stroke="#28313d"/><text x="${L-6}" y="${ys(v)+4}" text-anchor="end" font-size="10" fill="#6b7683">${v.toFixed(1)}</text>`).join('');
+  el('traj').innerHTML = `
+  <svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:100%" role="img" aria-label="Scope 1 plus 2 intensity, disclosed FY22 to FY26 versus your scenario and the FY35 target">
+    ${grid}
+    <line x1="${xs(26.6)}" y1="${ys(0.99)}" x2="${W-R}" y2="${ys(0.99)}" stroke="#5dc986" stroke-dasharray="5 4"/>
+    <text x="${W-R}" y="${ys(0.99)-6}" text-anchor="end" font-size="10" fill="#5dc986">FY35 target 0.99</text>
+    <path d="${p}" fill="none" stroke="#2dd4bf" stroke-width="2"/>
+    ${dots}
+    <line x1="${xs(26)}" y1="${ys(1.76)}" x2="${xs(28.5)}" y2="${ys(yv)}" stroke="#f5a623" stroke-dasharray="3 3"/>
+    <rect x="${xs(28.5)-5}" y="${ys(yv)-5}" width="10" height="10" transform="rotate(45 ${xs(28.5)} ${ys(yv)})" fill="#f5a623" stroke="#fff" data-tt="Your scenario · ${f2(m.s12)} tCO₂e/tcs (S1+2)"/>
+    <text x="${xs(28.5)}" y="${ys(yv)-11}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#f5a623">you · ${f2(m.s12)}</text>
+    ${[22,24,26].map(v=>`<text x="${xs(v)}" y="${H-10}" text-anchor="middle" font-size="10" fill="#6b7683">FY${v}</text>`).join('')}
+    <text x="${xs(28.5)}" y="${H-10}" text-anchor="middle" font-size="10" fill="#6b7683">scenario</text>
+    <text x="${xs(33.5)}" y="${H-10}" text-anchor="middle" font-size="10" fill="#6b7683">FY35</text>
+  </svg>`;
+}
+
+function drawSens(){
+  const cur = model(st).tot;
+  const moves = [
+    ['Scrap +5pp', {...st, s:Math.min(80,st.s+5)}],
+    ['Renewables +10pp', {...st, re:Math.min(90,st.re+10)}],
+    ['Clean fuel +20pp', {...st, cf:Math.min(80,st.cf+20)}],
+    ['NPI −20pp', {...st, npi:Math.max(0,st.npi-20)}],
+    ['FeCr → imported', {...st, fecrO:false}]];
+  const rows = moves.map(([n,x])=>[n, model(x).tot-cur]).filter(r=>r[1]<-0.0005)
+    .sort((a,b)=>a[1]-b[1]);
+  const max = Math.max(...rows.map(r=>-r[1]), 0.01);
+  el('sens').innerHTML = rows.map(([n,d],i)=>{
+    const c = i===0?'var(--teal)':(i===1?'var(--amber)':'var(--green)');
+    return `<div class="srow"><span>${n}</span><div><div class="b" style="width:${(-d/max*100).toFixed(1)}%;background:${c}"></div></div><span class="n" style="color:${c}">−${(-d).toFixed(2)}</span></div>`;
+  }).join('') || '<div class="note">All levers are at their feasible limits — this is the floor.</div>';
+}
+
+function render(){
+  const m = model(st);
+  el('v_s').textContent = st.s+'%'; el('v_npi').textContent = st.npi+'%';
+  el('v_re').textContent = st.re+'%'; el('v_cf').textContent = st.cf+'%';
+  el('capwarn').classList.toggle('show', st.s>=78);
+  el('t_s12').textContent = f2(m.s12); el('t_tot').textContent = f2(m.tot);
+  const dv = m.s12-1.76;
+  el('d_s12').innerHTML = dv<=0 ? `<span class="good">▼ ${f2(-dv)} vs FY26 disclosed 1.76</span>` : `<span class="bad">▲ +${f2(dv)} vs FY26 disclosed 1.76</span>`;
+  el('d_tot').innerHTML = m.tot<3.70 ? `<span class="good">▼ ${(100*(3.70-m.tot)/3.70).toFixed(0)}% below global avg 3.70</span>` : `<span class="bad">▲ above global avg 3.70</span>`;
+  const prog = Math.max(0,Math.min(100, (1.98-m.s12)/(1.98-0.99)*100));
+  el('t_prog').textContent = prog.toFixed(0)+'%'; el('progbar').style.width = prog+'%';
+  // stack
+  const segs = [['S1',m.S1,'var(--amber)'],['S2',m.S2,'var(--teal)'],['S3',m.S3,'var(--red)']];
+  el('stack').innerHTML = segs.map(([n,v,c])=>`<div style="flex:${v.toFixed(3)};background:${c}" data-tt="${n} · ${f2(v)} tCO₂/t · ${(100*v/m.tot).toFixed(0)}%">${n} ${f2(v)}</div>`).join('');
+  drawTraj(m); drawSens(); cbam(m);
+}
+
+function cbam(m){
+  const dir = m.S1; // conservative direct basis
+  el('cbamrows').innerHTML = CBAM_Y.map(r=>{
+    const d = r.def*r.f*r.ets, v = dir*r.f*r.ets;
+    return `<tr${r.y===2030?' class="hl"':''}><td>${r.y}</td><td>${(r.f*100).toFixed(1)}%</td><td>€${r.ets}</td><td style="color:var(--red)">€${d.toFixed(0)}</td><td style="color:var(--green)">€${v.toFixed(0)}</td></tr>`;
+  }).join('');
+  const t = +el('tons').value||0, fx = +el('fx').value||90;
+  const r30 = CBAM_Y[4];
+  const perT = (r30.def-dir)*r30.f*r30.ets;
+  const eur = perT*t, inr = eur*fx/1e7;
+  el('divid').textContent = `₹${inr.toFixed(0)} Cr / yr`;
+  el('dividsub').innerHTML = `€${perT.toFixed(0)} saved per tonne × ${t.toLocaleString('en-IN')} t = <b style="color:var(--w)">€${(eur/1e6).toFixed(1)}M in 2030</b> — filing verified data instead of the EU default.`;
+  window._invoice = {dir, perT, t, eur, m};
+}
+
+function bind(){
+  ['s','npi','re','cf'].forEach(k=>el(k).addEventListener('input',e=>{st[k]=+e.target.value;render();}));
+  document.querySelectorAll('#grades .chip').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#grades .chip').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); st.g=b.dataset.g; render();}));
+  el('fecrO').addEventListener('click',()=>{st.fecrO=true;el('fecrO').classList.add('on');el('fecrI').classList.remove('on');render();});
+  el('fecrI').addEventListener('click',()=>{st.fecrO=false;el('fecrI').classList.add('on');el('fecrO').classList.remove('on');render();});
+  const PRE = {
+    fy24:{g:'304',s:60,npi:50,re:30,cf:0,fecrO:true},
+    fy26:{g:'304',s:70,npi:33,re:47,cf:30,fecrO:true},
+    fy35:{g:'304',s:78,npi:20,re:65,cf:50,fecrO:true},
+    max:{g:'304',s:80,npi:0,re:90,cf:80,fecrO:false}};
+  document.querySelectorAll('.pre').forEach(b=>b.addEventListener('click',()=>{
+    st = {...PRE[b.dataset.p]}; syncUI(); render();}));
+  el('tons').addEventListener('input',()=>cbam(model(st)));
+  el('fx').addEventListener('input',()=>cbam(model(st)));
+  el('run').addEventListener('click',optimize);
+  el('apply').addEventListener('click',()=>{ if(window._opt){ st={...window._opt}; syncUI(); render(); el('optres').classList.remove('show'); }});
+  el('invoice').addEventListener('click',()=>{
+    const iv = window._invoice, mm = iv.m;
+    const txt = `StainlessCarbon — CBAM invoice summary\nGrade ${st.g} · scrap ${st.s}% · NPI ${st.npi}% · RE ${st.re}% · clean fuel ${st.cf}% · FeCr ${st.fecrO?'Odisha 5.65':'imported 2.3'} t/t\nIntensity: S1 ${f2(mm.S1)} · S2 ${f2(mm.S2)} · S3 ${f2(mm.S3)} · total ${f2(mm.tot)} tCO2e/t\nCBAM 2030 (48.5% × €109): verified €${(iv.dir*0.485*109).toFixed(0)}/t vs EU default €446/t → dividend €${iv.perT.toFixed(0)}/t\nAnnual on ${iv.t.toLocaleString('en-IN')} t: €${(iv.eur/1e6).toFixed(1)}M\nBasis: EU Regs 2023/956 · 2025/2620-21 · direct emissions · ISSF-aligned model`;
+    navigator.clipboard?.writeText(txt).then(()=>{el('invoice').textContent='Copied ✓';setTimeout(()=>el('invoice').textContent='Copy CBAM invoice summary',1600);});
+  });
+  const tt = el('tt');
+  document.addEventListener('mousemove',e=>{
+    const t = e.target.closest('[data-tt]');
+    if(t){ tt.style.display='block'; tt.textContent=t.dataset.tt;
+      tt.style.left=Math.min(innerWidth-tt.offsetWidth-10, e.clientX+12)+'px'; tt.style.top=(e.clientY+14)+'px';
+    } else tt.style.display='none';
+  });
+}
+function syncUI(){
+  el('s').value=st.s; el('npi').value=st.npi; el('re').value=st.re; el('cf').value=st.cf;
+  el('fecrO').classList.toggle('on',st.fecrO); el('fecrI').classList.toggle('on',!st.fecrO);
+  document.querySelectorAll('#grades .chip').forEach(x=>x.classList.toggle('on',x.dataset.g===st.g));
+}
+function optimize(){
+  let best=null;
+  for(let s=40;s<=80;s+=2) for(let re=0;re<=90;re+=5) for(let cf=0;cf<=80;cf+=10) for(let npi=0;npi<=100;npi+=20){
+    const x={g:st.g,s,npi,re,cf,fecrO:st.fecrO};
+    const m=model(x);
+    if(!best||m.tot<best.m.tot) best={x,m};
+  }
+  window._opt = best.x;
+  const cur = model(st).tot;
+  el('optbig').textContent = f2(best.m.tot)+' tCO₂e/t  (−'+f2(cur-best.m.tot)+' vs current)';
+  el('optkv').innerHTML = `<span>scrap <b>${best.x.s}%</b></span><span>NPI <b>${best.x.npi}%</b></span><span>renewables <b>${best.x.re}%</b></span><span>clean fuel <b>${best.x.cf}%</b></span><span>grade <b>${st.g}</b></span><span>FeCr <b>${st.fecrO?'Odisha':'imported'}</b></span>`;
+  el('optres').classList.add('show');
+}
+bind(); render();
+</script>

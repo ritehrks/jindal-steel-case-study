@@ -9,6 +9,8 @@ used_in: []
 
 # CBAM Financial Impact: Projected Tax Exposure for Indian Stainless Steel (2026–2030)
 
+> **⚠️ RESOLVED (see `research/22-canonical-model-v1.md`, Ruling 1):** This file contains two conflicting datasets. **Sections 1–7 are canonical** (Regulation 2025/2621 defaults 6.49 base, ETS €80→€109). **Section 8 (Deep Research Addendum) is DISCARDED** — its 2.40 base default and inverted CBAM-factor table use an unnamed methodology and must not be cited. For headline € figures use **Model 3 (Table 3, gross pro-rata)**; Model 1 (Table 1) may only appear as a labeled statutory-formula sensitivity, never as the headline. JSL intensity for CBAM = company-wide Scope 1 (~1.5 conservative / 0.9–1.1 realistic), NOT 1.38 as used below.
+
 ## Executive Summary
 
 The European Union's **Carbon Border Adjustment Mechanism (CBAM)** transitioned into its definitive, payment-linked phase on **January 1, 2026** (under Regulation (EU) 2023/956). From 2026 through 2030, EU importers of Indian stainless steel must purchase and surrender CBAM certificates reflecting the embedded carbon emissions of their shipments.

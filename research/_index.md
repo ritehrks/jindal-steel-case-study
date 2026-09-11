@@ -3,7 +3,9 @@
 Single source of truth for everything researched. Check this table before
 requesting or running any new research — reuse beats re-researching.
 
-**Total: 18 research files + 1 master prompt**
+**Total: 19 research files + 1 master prompt**
+
+> **⚠️ START HERE: `research/22-canonical-model-v1.md` is the LOCKED single source of truth** for every number used in the PPT, calculator, and appendix. It resolves the file 08 internal conflict, the 08-vs-19 CBAM conflict, the Outokumpu boundary error, the 47%-vs-56% renewable split, the ferrochrome double-count trap, and the crude-vs-finished denominator trap — and adds the grade-wise alloy mass balance. Files below are evidence; headline numbers come from 22.
 
 | # | Topic | File |
 |---|-------|------|
@@ -25,6 +27,7 @@ requesting or running any new research — reuse beats re-researching.
 | 19 | **Jindal EU Exports, Market Share, Safeguard Quotas & CBAM Exposure** | `research/19-jindal-eu-exports-cbam-exposure.md` |
 | 20 | EU Digital Product Passport (DPP) Technical Specs for Steel | `research/20-dpp-technical-specifications.md` |
 | 21 | Enterprise Carbon SaaS Dashboards & Steel-Specific Tools | `research/21-enterprise-carbon-saas-dashboards.md` |
+| 22 | **CANONICAL MODEL v1 — locked numbers, conflict rulings, grade mass balance** | `research/22-canonical-model-v1.md` |
 
 ### Master Prompt (Give This to Fable)
 | 18 | **Fable Master Prompt V3 — Full Strategy Briefing** | `research/18-fable-master-prompt-v3.md` |
