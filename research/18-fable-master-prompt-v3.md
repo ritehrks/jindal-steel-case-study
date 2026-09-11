@@ -170,7 +170,19 @@ We have ONE example of a dashboard design that caught our eye. This is **just an
 You have full autonomy on execution, but here's what we need:
 
 ### Deliverable 1: The 2-Slide PPT (SUBMISSION-READY)
-Create the actual presentation file — the real, final PPT that gets uploaded to Unstop. Design it to be visually stunning, data-rich, and strategically devastating. This is Round 1 — 1-2 slides only.
+Create the actual presentation file — the real, final PPT that gets uploaded to Unstop. This is Round 1 — 1-2 slides only.
+
+**PPT QUALITY STANDARD — WINNER-TIER, NOT GENERIC:**
+Before designing the slides, research and study **winning PPTs from past Unstop competitions, IIM/ISB case competitions, McKinsey Solve, BCG Platinion, and similar B-school case study contests.** Understand what winners actually look like — the layout density, the visual hierarchy, the data-to-text ratio, the color schemes, the typography choices.
+
+Your slides must look like they came from a **top-3 consulting firm's final client presentation**, not a college project. Think:
+- **Dense but scannable** — every square inch communicates value, but nothing feels cluttered
+- **Data-forward** — real numbers, real charts, real comparisons (not bullet points saying "we will reduce emissions")
+- **Visual hierarchy** — the judge's eye goes exactly where you want it in the first 2 seconds
+- **Premium aesthetic** — dark mode or clean corporate, sharp typography, consistent color system
+- **"Tip of the iceberg" effect** — the 2 slides make judges feel there's a 50-slide deck and a working prototype behind them
+
+**Do NOT make a generic template PPT.** Study winners. Match that bar. Exceed it.
 
 ### Deliverable 2: The Calculator Website (LIVE PROTOTYPE)
 Build an actual working carbon & energy calculator for stainless steel. This is the core of Problem Statement 3 — a tool where users adjust inputs (scrap %, energy source, alloy mix) and instantly see the effect on emissions per tonne. Use real data from our research files (emission factors, fuel factors, Jindal benchmarks). Deploy it so we have a live link.
