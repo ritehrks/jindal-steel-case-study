@@ -1,0 +1,212 @@
+<!doctype html><html><head><meta charset="utf-8"><title>StainlessCarbon — Research Appendix</title><style>
+  :root{--navy:#123f63;--blue:#1b6db0;--text:#1f2937;--gray:#5b6570;--faint:#8a94a0;
+        --line:#c9d2dc;--line2:#e2e8ef;--thbg:#eef2f6;--box:#f5f7fa;--green:#1d7a4f;--red:#b3392f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Calibri,Arial,sans-serif;color:var(--text);font-size:10pt;line-height:1.5}
+  @page{size:A4;margin:16mm 15mm}
+  .cover{height:250mm;display:flex;flex-direction:column;justify-content:center;page-break-after:always}
+  .cover .k{font-size:10pt;letter-spacing:2px;color:var(--blue);text-transform:uppercase;font-weight:600}
+  .cover h1{font-size:30pt;color:var(--navy);font-weight:700;margin:10px 0 6px;line-height:1.15}
+  .cover .sub{font-size:12.5pt;color:var(--gray);max-width:150mm;line-height:1.5}
+  .cover .meta{margin-top:26px;border-top:2px solid var(--navy);padding-top:14px;font-size:10pt;color:var(--gray);line-height:1.8}
+  .cover .meta b{color:var(--navy)}
+  .cover .disc{margin-top:auto;font-size:8.5pt;color:var(--faint);font-style:italic}
+  h2{font-size:14pt;color:var(--navy);font-weight:700;border-bottom:2px solid var(--navy);padding-bottom:4px;margin:22px 0 10px;page-break-after:avoid}
+  h3{font-size:11pt;color:var(--navy);font-weight:700;margin:14px 0 6px;page-break-after:avoid}
+  p{margin-bottom:7px}
+  .metaline{font-size:8.5pt;color:var(--faint);margin-bottom:8px}
+  ul{margin:0 0 8px 16px}
+  li{margin-bottom:3px}
+  table{border-collapse:collapse;width:100%;font-size:8.8pt;margin:6px 0 10px;page-break-inside:avoid}
+  th{background:var(--thbg);color:var(--gray);font-weight:600;text-align:left;padding:4px 7px;border:1px solid var(--line)}
+  td{padding:4px 7px;border:1px solid var(--line2)}
+  .num td:not(:first-child),.num th:not(:first-child){text-align:right}
+  .src{font-size:8.3pt;color:var(--faint);font-style:italic;margin-bottom:4px}
+  .callout{background:var(--box);border:1px solid var(--line);border-left:3px solid var(--blue);padding:8px 12px;margin:8px 0;font-size:9.5pt}
+  .callout.g{border-left-color:var(--green);background:#f2f7ee}
+  .toc td{border:none;border-bottom:1px dotted var(--line2);padding:3px 4px}
+  .sec{page-break-before:always}
+  code{font-family:Consolas,monospace;font-size:8.8pt;background:var(--box);padding:1px 4px}
+  .eq{font-family:Consolas,monospace;font-size:9pt;background:var(--box);border:1px solid var(--line2);padding:8px 10px;margin:6px 0 10px}
+</style></head><body>
+
+<div class="cover">
+  <div class="k">Spark the Rising Curve · Jindal Stainless · Problem Statement 3 · Round 1</div>
+  <h1>StainlessCarbon<br>Research Appendix</h1>
+  <div class="sub">The evidence base behind the carbon &amp; energy calculator and the two-slide executive summary: emission factors, methodology, regulation, company disclosures, competitor analysis, and the locked canonical model that every submitted figure traces to.</div>
+  <div class="meta">
+    <b>Live calculator:</b> ritehrks.github.io/jindal-steel-case-study/website<br>
+    <b>Repository (19 research files, full sources):</b> github.com/ritehrks/jindal-steel-case-study<br>
+    <b>Date:</b> 11 September 2026
+  </div>
+  <div class="disc">Independent case-competition project built on public disclosures — not an official Jindal Stainless product. Figures carry the uncertainties noted per section.</div>
+</div>
+
+<h2>Contents</h2>
+<table class="toc">
+  <tr><td>1. The canonical model — locked figures and rulings</td></tr>
+  <tr><td>2. Emissions model specification and calibration</td></tr>
+  <tr><td>3. Emission factors: routes, alloys, India fuels and power</td></tr>
+  <tr><td>4. Methodology alignment: worldstainless / ISSF</td></tr>
+  <tr><td>5. Jindal Stainless: disclosed emissions FY22–FY26</td></tr>
+  <tr><td>6. CBAM: regulation, defaults, and the verification dividend</td></tr>
+  <tr><td>7. EU market access beyond CBAM: CPR, ESPR, Digital Product Passport</td></tr>
+  <tr><td>8. Jindal's EU exposure: exports, quotas, competitive position</td></tr>
+  <tr><td>9. Competitor tools: Primetals and SSAB teardown</td></tr>
+  <tr><td>10. The scrap ceiling: tramp elements and sensor sorting</td></tr>
+  <tr><td>11. Advanced levers: biochar, slag valorisation, logistics, shadow pricing, fuel switching</td></tr>
+  <tr><td>12. Assumptions, limitations and source register</td></tr>
+</table>
+
+<div class="sec"></div>
+<h2>1. The canonical model — locked figures and rulings</h2>
+<div class="metaline">Full text: research/22-canonical-model-v1.md · every figure in the deck and calculator traces here</div>
+<p>During pre-submission audit we found three conflicts across the research base and resolved each with a written ruling. The rulings, not the underlying files, govern all submitted numbers.</p>
+<ul>
+  <li><b>CBAM dataset.</b> Two candidate datasets existed. We locked the traceable one: India stainless default <b>6.49 tCO₂e/t</b> base rising to <b>8.44</b> with the +10/20/30% no-data markup (Implementing Regulation (EU) 2025/2621, corrected 2026/1740); ETS price path €80→€109 (2026–30); phase-in 2.5%→48.5% (Directive (EU) 2023/959). Liability quoted on the analyst-standard pro-rata basis.</li>
+  <li><b>Jindal's CBAM-relevant intensity.</b> A single-plant Scope 1+2 figure (0.65) was rejected: CBAM counts company-wide direct emissions. Derived company-wide Scope 1 from BRSR absolutes: FY24 <b>1.70</b> (matches CDP exactly), FY25 1.53, FY26 ≈ <b>1.52 tCO₂e/tcs</b>. Because captive-power emissions count as indirect under CBAM Annex II, the realistic CBAM-direct basis is <b>0.9–1.1</b>; we quote 1.4–1.5 as the conservative bound.</li>
+  <li><b>Benchmark comparisons.</b> Jindal's S1+2 (1.76) must not be compared with Outokumpu's 1.8 (a cradle-to-gate figure including upstream Scope 3). Correct comparisons: cradle-to-gate 3.03 vs worldstainless global average ≈3.70; S1+2 1.76 vs Indian steel-sector ≈2.5.</li>
+  <li><b>Boundary rules.</b> R1: captive ferrochrome and captive power live inside Scope 1+2 — never double-counted as Scope 3. R2: scrap enters burden-free (ISSF recycled-content); end-of-life credit is a second output. R3: intensities per tonne of <i>crude</i> steel (derived: FY24 1.758 Mt, FY25 1.956 Mt, FY26 2.015 Mt); sales tonnes are never the denominator.</li>
+  <li><b>Renewable share.</b> 47% locked for FY26 full-year (assured ESG Factsheet basis); the "56% by Q3 FY26" figure is quoted only as dated momentum.</li>
+</ul>
+
+<h2>2. Emissions model specification and calibration</h2>
+<div class="eq">CO₂/t = S1[0.12 AOD process + 1.244·(1 − 0.4·cleanfuel) fuels &amp; process heat + 1.10·(1−RE)·0.5·1.045 captive power]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ S2[1.10·(1−RE)·0.5·0.710 grid electricity]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ S3[(1 − scrap%) · Σ mᵢ·EFᵢ] &nbsp;&nbsp;subject to scrap ≤ 80%, Cu/Sn bounds</div>
+<h3>Grade-wise virgin-charge chemistry (kg per tonne crude steel)</h3>
+<table class="num">
+  <tr><th>Grade</th><th>Cr %</th><th>Ni %</th><th>Mo %</th><th>HC FeCr (60% Cr)</th><th>Contained Ni</th><th>FeMo (70% Mo)</th></tr>
+  <tr><td>304 austenitic</td><td>18</td><td>8</td><td>–</td><td>300</td><td>80</td><td>–</td></tr>
+  <tr><td>316 Mo-grade</td><td>17</td><td>10</td><td>2</td><td>283</td><td>100</td><td>29</td></tr>
+  <tr><td>430 ferritic</td><td>17</td><td>–</td><td>–</td><td>283</td><td>–</td><td>–</td></tr>
+  <tr><td>2205 duplex</td><td>22</td><td>5</td><td>3</td><td>367</td><td>50</td><td>43</td></tr>
+</table>
+<div class="callout g"><b>Triple validation.</b> (1) <i>Audited anchor:</i> FY26 inputs (70% scrap, 47% RE, 30% clean fuel, mixed Ni) return S1+2 1.73 and total 2.99 vs the audited 1.76 / 3.03 — within ~2%; FY24 inputs return 4.03 vs disclosed 4.05. (2) <i>Industry curve:</i> outputs track the worldstainless scrap curve (85%→1.95, 50%→3.70, 30%→6.80). (3) <i>Grade physics:</i> nickel-free 430 lands near half the 304 footprint.</div>
+
+<h2>3. Emission factors: routes, alloys, India fuels and power</h2>
+<div class="metaline">Files 01, 04, 05 · sources: worldsteel, Columbia CGEP, ICDA, Metso Outotec, ISSF, CEA v21.0, BEE PAT, IPCC 2006, MoEFCC BUR-3</div>
+<h3>Steelmaking routes (cradle-to-gate unless noted)</h3>
+<table class="num">
+  <tr><th>Route</th><th>tCO₂/t crude steel</th></tr>
+  <tr><td>BF-BOF (virgin)</td><td>~2.2 (1.8–3.0)</td></tr>
+  <tr><td>Scrap-EAF</td><td>~0.67</td></tr>
+  <tr><td>DRI-EAF (natural gas)</td><td>0.7–1.2</td></tr>
+  <tr><td>DRI-EAF (coal)</td><td>2–3</td></tr>
+  <tr><td>EU CBAM plant-gate benchmarks (reference)</td><td>BF-BOF 1.370 · DRI-EAF 0.481 · scrap-EAF 0.072</td></tr>
+</table>
+<h3>Alloy chain — the stainless differentiator</h3>
+<table class="num">
+  <tr><th>Input</th><th>Factor</th><th>Note</th></tr>
+  <tr><td>HC ferrochrome, global average</td><td>2.3 tCO₂/t</td><td>closed SAF, cleaner power</td></tr>
+  <tr><td><b>HC ferrochrome, Odisha captive-coal</b></td><td><b>5.4–6.2 tCO₂/t</b></td><td>open/semi-closed SAF; captive subcritical coal ≈1.08 t/MWh; ~70–75% of the total is power</td></tr>
+  <tr><td>Nickel pig iron (contained Ni)</td><td>60–85 tCO₂/t</td><td>Indonesian/Chinese RKEF routes</td></tr>
+  <tr><td>Class-1 nickel</td><td>~13 tCO₂/t</td><td></td></tr>
+  <tr><td>Ferromolybdenum</td><td>6.5 tCO₂/t ±30%</td><td>least certain factor; flagged</td></tr>
+</table>
+<h3>India power and fuels (regulator-grade)</h3>
+<table class="num">
+  <tr><th>Source</th><th>Factor</th><th>Basis</th></tr>
+  <tr><td>Grid electricity (FY24-25)</td><td>0.710 tCO₂/MWh</td><td>CEA CO₂ Baseline Database v21.0</td></tr>
+  <tr><td>Captive subcritical coal power</td><td>1.045 tCO₂/MWh</td><td>CEA default heat rate 2,500 kcal/kWh, 8% aux</td></tr>
+  <tr><td>Domestic coal (G12 blend)</td><td>1.46 tCO₂/t · 92.5 g/MJ GCV · oxidation 0.98</td><td>BEE PAT / CEA App. B</td></tr>
+  <tr><td>LSHS / furnace oil</td><td>3.16 / 3.04 tCO₂/t (71.9 g/MJ GCV)</td><td>BEE / CEA</td></tr>
+  <tr><td>Natural gas</td><td>1.82 kg/SCM (49.4 g/MJ GCV) → −31% vs FO in reheating</td><td>CEA App. B</td></tr>
+  <tr><td>Bio-LDO / green hydrogen</td><td>≈ 0 fossil Scope 1</td><td>IPCC biogenic accounting</td></tr>
+</table>
+
+<h2>4. Methodology alignment: worldstainless / ISSF</h2>
+<div class="metaline">File 06 · ISO 14040/14044, ISO 14404, GHG Protocol, worldsteel LCI</div>
+<ul>
+  <li>Standard boundary: <b>cradle-to-gate</b> (upstream alloys = Scope 3; melting/refining and downstream = Scope 1+2). Upstream Scope 3 is 60–75%+ of the footprint on virgin/NPI routes — the alloy mix moves total carbon far more than furnace efficiency.</li>
+  <li><b>Recycled-content method</b> (cut-off): scrap enters burden-free; virgin alloys carry full upstream burden. Used for factory-gate reporting and CBAM. <b>End-of-life method</b> (IISI Appendix 5): X = X₁ + (X₂ − X₁)·RR·Y with RR ≈ 0.95, Y ≈ 0.909 — reported as our second output.</li>
+  <li>Benchmark curve (worldstainless): 85% scrap → 1.95 · 75% → 2.45 · 50% → 3.70 · 30% → 6.80 tCO₂/t. Rule of thumb: each +10pp scrap ≈ −0.8 to −0.9 tCO₂/t.</li>
+</ul>
+
+<h2>5. Jindal Stainless: disclosed emissions FY22–FY26</h2>
+<div class="metaline">Files 03, 16 · JSL ESG Factsheets, BRSR, CDP, Integrated Annual Reports</div>
+<table class="num">
+  <tr><th>Metric (tCO₂e/tcs)</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr>
+  <tr><td>Scope 1+2 intensity</td><td>1.98</td><td>2.08</td><td>2.15</td><td>1.85</td><td><b>1.76</b></td></tr>
+  <tr><td>Scope 3 intensity</td><td>n/r</td><td>1.76</td><td>1.90</td><td>1.64</td><td><b>1.27</b></td></tr>
+  <tr><td>Cradle-to-gate total</td><td>–</td><td>–</td><td>4.05</td><td>3.49</td><td><b>3.03</b></td></tr>
+</table>
+<ul>
+  <li>Absolutes (BRSR): FY24 Scope 1 = 2,992,334 t; Scope 2 (market) = 787,141 t → 3,779,475 t. FY25: 2,995,799 + 622,511 = 3,618,310 t (−4.26%). FY26 Scope 2 market-based 474,893 t.</li>
+  <li>Scope 1 ≈ 79% of S1+2 (CDP FY24: 1.70 vs 0.45) — fuel substitution outweighs grid greening alone.</li>
+  <li>Levers on record: 70.12% scrap (BRSR FY26); 47% renewables FY26 (315.6 MW hybrid contracted); green H₂ 90 Nm³/h at Hisar, ~600 Nm³/h planned at Jajpur; Bio-LDO at 30% of liquid fuel in Hisar hot rolling (−17,400 tCO₂e/yr); ₹700 Cr solar programme; FY35 target 0.99 (−50% vs FY22); Net Zero 2050.</li>
+</ul>
+
+<div class="sec"></div>
+<h2>6. CBAM: regulation, defaults, and the verification dividend</h2>
+<div class="metaline">File 08 (§1–7 canonical) · Regulation (EU) 2023/956; Implementing Regulations (EU) 2025/2620, 2025/2621, 2026/1740</div>
+<table class="num">
+  <tr><th>Year</th><th>Phase-in</th><th>ETS €/tCO₂</th><th>India default tCO₂/t (with markup)</th><th>Default €/t</th><th>Jindal verified €/t (1.5 basis)</th></tr>
+  <tr><td>2026</td><td>2.5%</td><td>80</td><td>7.14</td><td>14</td><td>3</td></tr>
+  <tr><td>2027</td><td>5.0%</td><td>89</td><td>7.79</td><td>35</td><td>7</td></tr>
+  <tr><td>2028</td><td>10%</td><td>95</td><td>8.44</td><td>80</td><td>14</td></tr>
+  <tr><td>2029</td><td>22.5%</td><td>100</td><td>8.44</td><td>190</td><td>34</td></tr>
+  <tr><td><b>2030</b></td><td><b>48.5%</b></td><td><b>109</b></td><td><b>8.44</b></td><td><b>446</b></td><td><b>74 (48 on 0.9 direct basis)</b></td></tr>
+</table>
+<div class="callout"><b>The verification dividend.</b> €372–398 saved per tonne by 2030 by filing verified plant data instead of accepting EU defaults. On Jindal's 60–80 kt/yr EU export book: <b>€22–32M ≈ ₹200–290 crore per year</b>. The 2029→2030 phase-in jump (22.5%→48.5%) is the financial cliff that makes tooling urgent now.</div>
+<p>Notes: for iron and steel the definitive phase prices <b>direct</b> emissions only (indirect/electricity excluded while EU producers receive indirect-cost compensation); post-consumer scrap carries zero embedded emissions, pre-consumer scrap carries its origin burden — mass-balance traceability is required to avoid punitive defaults.</p>
+
+<h2>7. EU market access beyond CBAM: CPR, ESPR, Digital Product Passport</h2>
+<div class="metaline">Files 12, 20 · Regulation (EU) 2024/3110 (CPR), 2024/1781 (ESPR), CEN/CENELEC EN 18216–18223</div>
+<ul>
+  <li><b>CPR:</b> from 8 Jan 2026, steel placed on the EU construction market must declare GWP (EN 15804+A2, product-specific, facility-specific) as a condition of CE marking. Generic industry averages no longer permitted.</li>
+  <li><b>ESPR / DPP:</b> iron and steel are first-wave priority products; delegated act expected Q4 2026, mandatory compliance ≈2028. The Digital Product Passport is a decentralised, machine-readable record (heat number, chemistry, recycled content, GWP) using EN 18219 identifiers, QR data carriers, JSON-LD/REST interfaces.</li>
+  <li><b>Green procurement:</b> the proposed Industrial Accelerator Act would require ≥25% low-carbon steel in EU public procurement from 2029 — no geographic restriction, an open opportunity for verified low-carbon exporters.</li>
+  <li>Implication: the calculator's per-tonne record is designed as the natural feeder for EPD/DoPC and DPP data fields — compliance infrastructure, not just an estimator.</li>
+</ul>
+
+<h2>8. Jindal's EU exposure: exports, quotas, competitive position</h2>
+<div class="metaline">File 19 · CARE Ratings, JSL results, Iberjindal disclosures, UN Comtrade, Goldman Sachs / ICRA / CRISIL</div>
+<ul>
+  <li>Sales volume 2.17 → 2.56 Mt (FY24→FY26); export mix deliberately moderated 17% → 8%; estimated direct EU shipments <b>60–80 kt/yr</b>, ~30 kt processed through Iberjindal S.L. (Lucena, Spain; ~€60M turnover).</li>
+  <li>Mid-2026 EU safeguard revision: tariff-free quota cut 47%; out-of-quota duty doubled to 50%; India-exclusive quota (Cat. 14 bars/sections) 92,557 t. CRISIL: 25–30% decline in Indian steel exports to EU; EEPC: ~$1.36B revenue at risk.</li>
+  <li>Analyst context: Goldman Sachs — Indian BF-BOF steel faces $102–190/t CBAM cost (15–28% margin compression); ICRA — $50–140/t through 2034. Jindal's scrap-EAF route with verified data is the structural exception — positioned to fill the supply vacuum as carbon-intensive routes exit the EU market.</li>
+</ul>
+
+<h2>9. Competitor tools: Primetals and SSAB teardown</h2>
+<div class="metaline">File 07 · product documentation and UX walkthrough</div>
+<table>
+  <tr><th></th><th>Primetals CO₂ Calculator</th><th>SSAB EcoUpgraded</th><th>StainlessCarbon</th></tr>
+  <tr><td>Focus</td><td>carbon-steel route engineering (BF-BOF/DRI/EAF)</td><td>downstream vehicle use-phase</td><td>stainless EAF-AOD production</td></tr>
+  <tr><td>Alloy chain (FeCr/NPI)</td><td>not modelled</td><td>not modelled</td><td><b>modelled explicitly</b></td></tr>
+  <tr><td>Grid context</td><td>European defaults</td><td>n/a</td><td>India grid + captive coal</td></tr>
+  <tr><td>Feasibility limits</td><td>none (100% scrap allowed)</td><td>n/a</td><td>80% cap + warnings</td></tr>
+  <tr><td>CBAM €/t</td><td><b>partial</b> (ETS/CBAM cost indicators)</td><td>none</td><td>full 2026–30 escalator</td></tr>
+  <tr><td>Access</td><td>enterprise-gated; 30+ metallurgical inputs</td><td>free app; 5–7 inputs</td><td>free web; 4 levers</td></tr>
+</table>
+<p>Positioning: "SSAB simplicity × Primetals depth", rebuilt for stainless metallurgy and India. Five documented gaps: alloy blindspot, all-or-nothing usability, India-context blindness, no practicality constraints, no link to any company's real disclosed trajectory.</p>
+
+<h2>10. The scrap ceiling: tramp elements and sensor sorting</h2>
+<div class="metaline">File 11 + file 01 §E</div>
+<ul>
+  <li>Cu and Sn are noble to iron at 1600 °C — they cannot be oxidised out in the AOD and accumulate linearly with scrap ratio, causing surface hot-shortness (liquid Cu-rich films penetrating grain boundaries during hot rolling; Sn depresses the solidus below 900 °C and worsens it).</li>
+  <li>Supply side: India's scrap share is only 23–25% of steel input; 48 countries had scrap export restrictions (Mar 2025); the global scrap market is projected to swing to a ~15 Mt deficit by 2030. Hence the <b>80% hard cap</b> in the tool.</li>
+  <li>The escape path is at the scrap yard, not the furnace: AI-driven XRF/XRT/LIBS sensor sorting (≈20 t/h lines) upgrades tramp-laden obsolete scrap; abatement cost ≈$30–43/tCO₂ — well below the 2030 CBAM price of €109.</li>
+</ul>
+
+<h2>11. Advanced levers (roadmap depth)</h2>
+<div class="metaline">Files 09, 10, 13, 14, 15</div>
+<ul>
+  <li><b>Biochar in ferrochrome SAFs (Odisha):</b> bamboo biochar (2–5% ash, 81–85% fixed C) is a near-drop-in for met coke; resistivity converges with fossil carbon above ~1400 °C; paddy-straw biochar capped ~10–20% by slag chemistry. 30% substitution abates 0.45–0.66 tCO₂/t FeCr; marginal abatement cost ≈$29–45/tCO₂. Aligned with the Ministry of Steel's 2024 "Greening the Steel Sector" roadmap.</li>
+  <li><b>Slag valorisation:</b> AOD slag self-pulverises (β→γ dicalcium-silicate "dusting") — ideal for mineral carbonation without grinding; processed slags substitute cement clinker (Jindal–Harsco $150M contract expansion already on record). Dual benefit: Scope 1 mineralisation + Scope 3 avoided emissions.</li>
+  <li><b>Logistics:</b> shifting inbound bulk from road (55–101 gCO₂e/t-km) to the electrified Dedicated Freight Corridor (11.5 g) saves ~40–67 kg CO₂e/tcs depending on route basis — scalable at near-zero marginal cost.</li>
+  <li><b>Internal carbon shadow pricing:</b> a dynamic CBAM-aligned shadow price inside melt-shop charge optimisation (MILP) flips NPI-vs-scrap procurement decisions before the 2030 cliff arrives.</li>
+  <li><b>Captive power value stacking:</b> replacing captive coal with hybrid renewables stacks LCOE savings + CCTS credits + CBAM avoidance + RCO compliance to ≈₹6.6/kWh of combined value — the transition pays for itself.</li>
+</ul>
+
+<h2>12. Assumptions, limitations and source register</h2>
+<ul>
+  <li>Intensities per tonne of <b>crude</b> steel; Scope 2 market-based; CBAM module prices direct emissions only (conservative — captive-electricity emissions count as indirect under CBAM and would lower Jindal's basis further).</li>
+  <li>Model constants are calibrated so disclosed FY24/FY26 states reproduce audited intensities (±2%); ferromolybdenum ±30%; NPI 60–85 t/t range reflects sourcing variation; ETS path is analyst consensus, not a forecast guarantee.</li>
+  <li>The 80% scrap cap is a metallurgical-plus-supply judgment for critical grades; sensor sorting can raise it over time.</li>
+</ul>
+<h3>Primary sources</h3>
+<p style="font-size:9pt;color:var(--gray)">Jindal Stainless ESG Factsheets FY24-25 &amp; FY26; BRSR FY24–26; CDP Climate Change disclosures; Integrated Annual Reports · CEA CO₂ Baseline Database v21.0 (Dec 2025) · BEE PAT normalization documents and energy-auditor guides · IPCC 2006 Guidelines Vol. 2 (2019 refinements) · MoEFCC BUR-3 · worldstainless/ISSF publications and Fujii et al. (2005) LCI · worldsteel LCI methodology · ICDA ferrochrome LCA · Metso Outotec technical papers · Regulation (EU) 2023/956; Implementing Regulations (EU) 2025/2620, 2025/2621, 2026/1740; Regulation (EU) 2024/3110 (CPR); Regulation (EU) 2024/1781 (ESPR); CEN/CENELEC EN 18216–18223 · Ministry of Steel, "Greening the Steel Sector in India" (2024) · Smart Freight Centre GLEC v3.01 / ISO 14083; DFCCIL operational data · Goldman Sachs, ICRA, CRISIL, GTRI analyses · CARE Ratings; UN Comtrade/WITS · TOMRA sensor-sorting specifications · Orbix / Carbon8 carbonation case studies.</p>
+<p style="font-size:8.3pt;color:var(--faint);font-style:italic;margin-top:10px">Full research files with inline citations: github.com/ritehrks/jindal-steel-case-study → /research (19 files; research/22-canonical-model-v1.md governs all figures).</p>
+
+</body></html>
