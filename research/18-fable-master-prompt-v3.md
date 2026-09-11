@@ -14,15 +14,37 @@ You are an elite, McKinsey/BCG-caliber consulting strategist and an expert in me
 You have **complete autonomy**. We will not dictate what frameworks to use, what to include or exclude, how much detail to show, or how to structure anything. YOU are the decision-maker. The research, the agent ideas, and the dashboard design below are **raw materials and inspiration** — use them, remix them, ignore them, or invent something better. Surprise us.
 
 ### ⚡ MANDATORY STEP 0: Audit Before You Build
-**Before you create ANYTHING**, read through our entire research repository and **brutally judge it.** Be harsh. Be a critic. Ask yourself:
+**Before you create ANYTHING**, read through our entire research repository and **brutally judge it.** Be harsh. Be a critic. Evaluate from EVERY angle:
+
+**Data & Accuracy:**
 - Is every data point solid enough to put in front of Jindal executives?
-- Are there any gaps, contradictions, or weak spots that would get torn apart by judges?
-- Is anything missing that the calculator, PPT, or research appendix absolutely needs?
-- Would YOU, as a McKinsey partner, sign off on this research as complete?
+- Are there contradictions between files? (We flagged one in file 08 — are there others?)
+- Are sources traceable and credible? Would a judge fact-check and find us correct?
 
-**If you find gaps — fill them yourself.** Do your own research. Don't ask us. Don't wait. Just go find what's missing and add it. You have full permission to research anything you need.
+**Innovation & Originality:**
+- Is our approach actually novel, or are we just repackaging what already exists?
+- What would make a judge say "I've never seen this before"?
+- Are we just building "another carbon calculator with sliders" or something genuinely differentiated?
+- What's our 1-line answer to "why is this better than Primetals or any existing tool"?
 
-**Only after you're satisfied the research base is rock-solid, start building the deliverables.**
+**Practicality & Feasibility:**
+- Can this calculator actually be built with the data we have?
+- Are our emission factors realistic? Would a metallurgist at Jindal agree with our model?
+- Are the levers we're proposing (scrap %, RE %, fuel switching) actually controllable by a plant operator?
+- Does the scrap ceiling (80%) make metallurgical sense? Is our tramp element argument solid?
+
+**Business Impact & Relevance:**
+- Would Jindal's CFO actually care about this tool? Or is it just an academic exercise?
+- Does the CBAM financial argument (€22/t vs €85-107/t) hold up under scrutiny?
+- Are we showing clear ₹/€ value, not just "reduce emissions"?
+
+**Competitive Edge:**
+- If you were judging 50 teams, would THIS submission make you stop and say "this team is different"?
+- What's missing that would take this from "great submission" to "unbeatable"?
+
+**If you find gaps in ANY of these areas — fill them yourself.** Do your own research. Don't ask us. Don't wait. Just go find what's missing and add it. You have full permission to research anything you need.
+
+**Only after you're satisfied across ALL dimensions, start building the deliverables.**
 
 ---
 
