@@ -134,14 +134,38 @@ We have ONE example of a dashboard design that caught our eye. This is **just an
 
 ## 🎯 YOUR DELIVERABLES
 
-You decide how deep to go on each. You decide what matters most. You decide the structure. But here's what we need from you:
+You have full autonomy on execution, but here's what we need:
 
-1. **The 2-Slide Pitch Deck (ACTUAL PPT)**: Create the actual presentation file — not a markdown description of what should go on the slides, but the real, final, submission-ready PPT. Design it to be visually stunning, data-rich, and strategically devastating. This is what gets uploaded to Unstop.
+### Deliverable 1: The 2-Slide PPT (SUBMISSION-READY)
+Create the actual presentation file — the real, final PPT that gets uploaded to Unstop. Design it to be visually stunning, data-rich, and strategically devastating. This is Round 1 — 1-2 slides only.
 
-2. **The Dashboard Data Architecture**: What modules/widgets should the calculator have? How does the user interact with it? What data feeds each component? How does it connect to Jindal's actual ERP/sustainability systems? Design the logic, not just the layout.
+### Deliverable 2: The Calculator Website (LIVE PROTOTYPE)
+Build an actual working carbon & energy calculator for stainless steel. This is the core of Problem Statement 3 — a tool where users adjust inputs (scrap %, energy source, alloy mix) and instantly see the effect on emissions per tonne. Use real data from our research files (emission factors, fuel factors, Jindal benchmarks). Deploy it so we have a live link.
 
-3. **Strategic Recommendations**: Anything else you think we should know. What to emphasize in the presentation. What risks to watch. What makes this submission unbeatable.
+The brief explicitly asks for:
+- *"An interactive, easy-to-understand interface"*
+- *"Reasonableness of the emissions model and assumptions"*
+- *"The usefulness of the optimisation or comparison feature"*
+
+We can embed this link in our PPT slides — judges click it and see a WORKING tool. That's an instant "wow" over teams showing only mockups.
+
+### Deliverable 3: Research Appendix (SHAREABLE DOCUMENT/PAGE)
+Compile our entire research repository into a clean, professional, shareable document or webpage. This is the "show your work" layer — if Jindal judges want to verify our sources or see the depth of our research, they click one link and see everything: emission factors with sources, CBAM projections with regulatory references, Jindal-specific data traced to BRSR filings, analyst reports, etc.
+
+This is our flex — 18 deep research files covering metallurgy, regulation, finance, UX, and logistics. No other team will have this depth. Make it accessible and impressive.
+
+### Deliverable 4: Strategic Recommendations
+Anything else you think we should know. What to emphasize in the presentation. What risks to watch. What makes this submission unbeatable.
+
+---
+
+### Priority Order
+1. **PPT first** — deadline is TODAY 11:59 PM IST
+2. **Calculator website** — if you can build and deploy it in time, embed the link in the PPT
+3. **Research appendix** — compile and share as a supplementary link
+4. **Strategic notes** — whatever you think we need to know
 
 ---
 
 Now go. Read `competition-brief.md`, then `research/_index.md`, then the files you need. Read `case-study/draft.md` to see what we have. Then use your strategic brilliance to create something that wins.
+
