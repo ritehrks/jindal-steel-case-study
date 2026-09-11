@@ -1,25 +1,33 @@
 # Research Index
 
-Single source of truth for everything researched so far. Check this table before
+Single source of truth for everything researched. Check this table before
 requesting or running any new research — reuse beats re-researching.
 
-| # | Topic | Method | Date | File |
-|---|-------|--------|------|------|
-| 00 | Deep Research task prompts (5 tasks) | external-research | 2026-09-10 | research/00-deep-research-tasks.md |
-| 01 | Ground truth data — emission factors, Jindal context, constraints, tools | external-research | 2026-09-10 | research/01-ground-truth-emission-data.md |
-| 02 | Fable 5 master prompt with embedded research | external-research | 2026-09-10 | research/02-fable5-master-prompt.md |
-| 03 | Jindal GHG emission intensity FY22-FY26 | gemini-deep-research | 2026-09-10 | research/03-jindal-emission-intensity.md (used_in: draft.md) |
-| 04 | India & Odisha Ferrochrome Emission Factors | agent-search (Flash) | 2026-09-10 | research/04-india-ferrochrome-emission-factor.md |
-| 05 | India Fuel Emission Factors for Captive Power | agent-search (Flash) | 2026-09-10 | research/05-india-fuel-emission-factors.md |
-| 06 | worldstainless (ISSF) CO2 Calculation Methodology | agent-search (Flash) | 2026-09-10 | research/06-issf-methodology.md |
-| 07 | Competitor Tools UX Walkthrough (Primetals & SSAB) | agent-search (Flash) | 2026-09-10 | research/07-competitor-tools-ux.md |
-| 08 | Projected CBAM Tax Exposure & EU ETS Carbon Price (2026-2030) | agent-search (Flash) | 2026-09-10 | research/08-cbam-financial-impact.md |
-| 09 | Biochar Substitution in High-Carbon Ferrochrome (Odisha) | user-provided (Gemini Deep Research) | 2026-09-10 | research/09-biochar-ferrochrome-odisha.md |
-| 10 | Scope 3 Logistics Decarbonization (DFC Rail vs Road) | user-provided (Gemini Deep Research) | 2026-09-10 | research/10-scope3-logistics-dfc.md |
-| 11 | Decarbonizing Stainless Steel: Scrap Sorting & Tramp Elements | user-provided (Gemini Deep Research) | 2026-09-10 | research/11-scrap-sorting-tramp-elements.md |
-| 12 | Strategic Implications of EU CPR, ESPR, and DPP Regulations | user-provided (Gemini Deep Research) | 2026-09-10 | research/12-eu-cpr-espr-dpp-regulations.md |
-| 13 | Techno-Economic Assessment of Stainless Steel Slag Valorization | user-provided (Gemini Deep Research) | 2026-09-10 | research/13-slag-valorization-circular-economy.md |
-| 14 | Dynamic Internal Carbon Shadow Pricing in Procurement | user-provided (Gemini Deep Research) | 2026-09-10 | research/14-internal-carbon-shadow-pricing.md |
-| 15 | Valuation of Captive Power Fuel Switching in India | user-provided (Gemini Deep Research) | 2026-09-10 | research/15-captive-power-fuel-switching.md |
-| 16 | Jindal Stainless — Scope 1+2 Emissions Analysis (FY24/25) | user-provided (Gemini Deep Research) | 2026-09-10 | research/16-jindal-scope1-scope2-fy24-fy25.md |
-| 17 | Fable Master Prompt V2 (Strategy Briefing & Agent Angles) | agent-synthesis | 2026-09-10 | research/17-fable-master-prompt-v2.md |
+**Total: 18 research files + 1 master prompt**
+
+| # | Topic | File |
+|---|-------|------|
+| 01 | Ground truth — emission factors, Jindal context, constraints, existing tools | `research/01-ground-truth-emission-data.md` |
+| 03 | Jindal GHG emission intensity FY22-FY26 (Scope 1+2+3 disaggregated) | `research/03-jindal-emission-intensity.md` |
+| 04 | India & Odisha Ferrochrome Emission Factors (5.4-6.2 tCO2e/t) | `research/04-india-ferrochrome-emission-factor.md` |
+| 05 | India Fuel Emission Factors for Captive Power (coal, LSHS, diesel, propane, NG) | `research/05-india-fuel-emission-factors.md` |
+| 06 | worldstainless (ISSF) CO2 Calculation Methodology & Benchmarks | `research/06-issf-methodology.md` |
+| 07 | Competitor Tools UX Walkthrough (Primetals & SSAB) + 5 Gaps | `research/07-competitor-tools-ux.md` |
+| 08 | CBAM Tax Exposure & EU ETS Carbon Price 2026-2030 | `research/08-cbam-financial-impact.md` |
+| 09 | Biochar Substitution in High-Carbon Ferrochrome (Odisha) | `research/09-biochar-ferrochrome-odisha.md` |
+| 10 | Scope 3 Logistics: DFC Rail vs Road (55→11.5 gCO2e/t-km) | `research/10-scope3-logistics-dfc.md` |
+| 11 | Scrap Sorting & Tramp Elements (Cu/Sn barrier, AI XRF/LIBS) | `research/11-scrap-sorting-tramp-elements.md` |
+| 12 | EU CPR, ESPR, and Digital Product Passport Regulations | `research/12-eu-cpr-espr-dpp-regulations.md` |
+| 13 | Stainless Steel Slag Valorization & Circular Economy | `research/13-slag-valorization-circular-economy.md` |
+| 14 | Dynamic Internal Carbon Shadow Pricing in Procurement | `research/14-internal-carbon-shadow-pricing.md` |
+| 15 | Captive Power Fuel Switching Economics & Value Stacking | `research/15-captive-power-fuel-switching.md` |
+| 16 | Jindal Scope 1+2 Emissions: FY24 vs FY25 (absolute numbers) | `research/16-jindal-scope1-scope2-fy24-fy25.md` |
+| 19 | **Jindal EU Exports, Market Share, Safeguard Quotas & CBAM Exposure** | `research/19-jindal-eu-exports-cbam-exposure.md` |
+| 20 | EU Digital Product Passport (DPP) Technical Specs for Steel | `research/20-dpp-technical-specifications.md` |
+| 21 | Enterprise Carbon SaaS Dashboards & Steel-Specific Tools | `research/21-enterprise-carbon-saas-dashboards.md` |
+
+### Master Prompt (Give This to Fable)
+| 18 | **Fable Master Prompt V3 — Full Strategy Briefing** | `research/18-fable-master-prompt-v3.md` |
+
+### Existing Draft
+| — | Current 2-slide draft (Fable can improve/replace) | `case-study/draft.md` |

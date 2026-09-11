@@ -1,4 +1,14 @@
+# Internal agent configs (not needed for Fable)
 .agents/
 .gemini/
+
+# Scratch/temp files
 scratch/
 simulate_cli_agents.py
+
+# Old/obsolete files
+research/00-deep-research-tasks.md
+research/02-fable5-master-prompt.md
+research/17-fable-master-prompt-v2.md
+pdf_content.txt
+jindal-case-study-agent-tree-v2.pdf
