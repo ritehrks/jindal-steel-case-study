@@ -1,202 +1,130 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
   :root{
-    --bg:#0e1218; --panel:#161c25; --panel2:#1e2631; --ink:#0a0d12;
-    --line:#333e4b; --line2:#28313d;
-    --w:#f2f5f8; --mut:#a4b0bd; --faint:#6b7683;
-    --amber:#f5a623; --teal:#2dd4bf; --red:#e85d5d; --green:#5dc986; --blue:#5b9bee; --brown:#c98a4b;
+    --navy:#123f63; --blue:#1b6db0; --text:#1f2937; --gray:#5b6570; --faint:#8a94a0;
+    --line:#c9d2dc; --line2:#e2e8ef; --thbg:#eef2f6; --box:#f5f7fa;
+    --red:#b3392f; --green:#1d7a4f; --amberd:#a8720e; --steel:#7b8794;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:1280px;height:720px;background:var(--bg);font-family:'Segoe UI',system-ui,sans-serif;color:var(--w);overflow:hidden}
-  .slide{width:1280px;height:720px;padding:16px 22px 12px;display:flex;flex-direction:column;gap:9px;position:relative}
-  .slide:before{content:'';position:absolute;inset:0;background:
-    radial-gradient(900px 300px at 92% -5%,rgba(245,166,35,.06),transparent 60%),
-    radial-gradient(700px 300px at 5% 110%,rgba(45,212,191,.04),transparent 60%);pointer-events:none}
-  .hdr{display:flex;justify-content:space-between;align-items:flex-start}
-  h1{font-size:25px;line-height:1.16;font-weight:800;letter-spacing:-.2px}
-  h1 .b{color:var(--amber)}
-  .badge{border:1px solid var(--line);border-radius:4px;padding:7px 12px;font-size:9.5px;font-weight:700;color:var(--amber);letter-spacing:.8px;background:rgba(10,13,18,.5)}
-  .mod{border:1px solid var(--line);border-radius:5px;background:var(--panel);display:flex;flex-direction:column;min-height:0}
-  .mh{display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line2);padding:0 10px 0 0;height:26px;flex:none}
-  .mn{width:34px;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--ink);border-radius:4px 0 0 0}
-  .mt{font-weight:700;font-size:12.5px;letter-spacing:.3px}
-  .ms{font-size:9.5px;color:var(--faint);margin-left:auto;letter-spacing:.3px}
-  .mb{padding:8px 10px;flex:1;min-height:0}
-  .bandA{display:flex;gap:10px;height:305px;flex:none}
-  .bandB{display:flex;gap:10px;flex:1;min-height:0}
-  /* table */
-  table.tt{border-collapse:collapse;width:100%;font-size:9.6px}
-  .tt th{background:var(--ink);color:var(--mut);font-size:8.8px;font-weight:700;padding:4.5px 7px;text-align:center;letter-spacing:.3px}
-  .tt th:first-child,.tt td:first-child{text-align:left}
-  .tt th:last-child,.tt td:last-child{text-align:left}
-  .tt td{border-top:1px solid var(--line2);padding:4.5px 7px;text-align:center;color:var(--w)}
-  .tt tr.kpi td{font-weight:800;font-size:10.5px}
-  .tt tr.kpi td:first-child{font-weight:700;font-size:9.6px}
-  .tt td.src{color:var(--faint);font-size:8.6px}
-  .delta{margin-top:7px;font-size:10px}
-  .delta b.g{color:var(--green)} .delta .t{color:var(--amber);font-weight:800}
-  .note{margin-top:3px;font-size:8.8px;color:var(--faint);font-style:italic}
-  /* bars */
-  .brow{margin-bottom:8px}
-  .blab{font-size:9.6px;margin-bottom:3px}
+  html,body{width:1280px;height:720px;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif;color:var(--text);overflow:hidden}
+  .slide{width:1280px;height:720px;padding:26px 34px 14px;display:flex;flex-direction:column}
+  .titlebar{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+  h1{font-size:20.5px;font-weight:600;color:var(--navy);line-height:1.3;max-width:1040px}
+  h1 b{font-weight:700}
+  .meta{font-size:9.5px;color:var(--faint);text-align:right;line-height:1.6;white-space:nowrap;padding-top:3px}
+  .rule{height:2.5px;background:var(--navy);margin:10px 0 14px;flex:none}
+  .sec{font-size:10px;font-weight:700;letter-spacing:1.1px;color:var(--blue);text-transform:uppercase;
+       border-bottom:1px solid var(--line2);padding-bottom:4px;margin-bottom:8px}
+  .bandA{display:flex;gap:24px;flex:none}
+  .bandB{display:flex;gap:24px;flex:1;min-height:0;margin-top:14px;border-top:1px solid var(--line2);padding-top:12px}
+  table{border-collapse:collapse;width:100%;font-size:10.6px}
+  th{background:var(--thbg);color:var(--gray);font-weight:600;text-align:center;padding:4.5px 7px;border:1px solid var(--line);font-size:9.8px}
+  th:first-child{text-align:left}
+  td{padding:4.5px 7px;border:1px solid var(--line2);text-align:center}
+  td:first-child{text-align:left}
+  tr.kpi td{font-weight:700}
+  td.a{color:var(--blue)} td.o{color:var(--amberd)} td.r{color:var(--red)} td.g2{color:var(--green)}
+  td.src{color:var(--faint);font-size:9.3px;text-align:left}
+  .delta{font-size:10.8px;margin-top:7px;line-height:1.5}
+  .delta b{color:var(--green)}
+  .delta .t{color:var(--navy);font-weight:700}
+  .noteit{font-size:9.6px;color:var(--faint);font-style:italic;margin-top:3px}
+  .vrow{font-size:10.6px;line-height:1.45;margin-top:6px;padding-left:10px;position:relative;color:var(--text)}
+  .vrow:before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;background:var(--green)}
+  .vrow b{color:var(--navy)}
+  /* cbam */
+  .brow{margin-bottom:7px}
+  .blab{font-size:10.2px;margin-bottom:2px;color:var(--text)}
   .bwrap{display:flex;align-items:center;gap:7px}
-  .bar{height:13px;border-radius:2px}
-  .bval{font-size:11px;font-weight:800}
-  .mech{font-size:8.6px;color:var(--faint);margin:2px 0 6px}
-  .hero{border-top:1px solid var(--line2);padding-top:6px}
-  .hero .big{font-size:31px;font-weight:800;color:var(--amber);letter-spacing:-.5px;line-height:1}
-  .hero .big small{font-size:14px;color:var(--w);font-weight:700}
-  .hero p{font-size:9.6px;color:var(--mut);margin-top:4px}
-  .hero p.t{color:var(--teal);font-weight:700}
-  /* validation */
-  .chart{position:relative;margin:2px 0 6px}
-  .cap{font-size:8.8px;color:var(--faint);margin-bottom:2px}
-  .vrow{display:flex;gap:7px;margin-bottom:5px;font-size:9.2px;align-items:baseline}
-  .vbar{width:3px;height:11px;border-radius:2px;background:var(--green);flex:none;align-self:center}
-  .vrow b{color:var(--w);white-space:nowrap}
-  .vrow span{color:var(--mut)}
+  .bar{height:11px;border-radius:2px}
+  .bval{font-size:10.5px;font-weight:700}
+  .hero{border-top:1px solid var(--line2);margin-top:9px;padding-top:8px}
+  .hero .big{font-size:27px;font-weight:700;color:var(--navy);letter-spacing:-.3px}
+  .hero .big small{font-size:13px;color:var(--gray);font-weight:600}
+  .hero p{font-size:10.2px;color:var(--gray);margin-top:3px;line-height:1.45}
   /* recs */
-  .rec{display:flex;gap:9px;margin-bottom:7px;align-items:flex-start}
-  .rn{width:30px;height:30px;flex:none;border:1.5px solid;border-radius:5px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px}
-  .rec p{font-size:9.3px;line-height:1.35;color:var(--w)}
-  .rec p b{font-size:8.8px;letter-spacing:.5px;margin-right:3px}
-  .combined{border-top:1px solid var(--line2);padding-top:5px;font-size:9.4px;font-weight:700;color:var(--green)}
-  /* gantt */
-  .gantt{font-size:8.8px}
-  .grow{display:grid;grid-template-columns:92px repeat(5,1fr);align-items:center;height:24px}
-  .ghead{color:var(--faint);text-align:center;font-size:8.6px}
-  .gname{color:var(--w);font-size:8.8px;line-height:1.15;padding-right:4px}
-  .gcell{position:relative;height:100%;border-left:1px solid var(--line2)}
-  .gbar2{position:absolute;top:7px;height:9px;border-radius:2px}
-  .gnote{margin-top:6px;font-size:8.6px;color:var(--faint);font-style:italic}
-  .foot{border:1px solid var(--line);border-radius:4px;background:var(--ink);padding:5px 12px;font-size:8.8px;color:var(--mut);flex:none;line-height:1.5}
-  .foot b{color:var(--amber);letter-spacing:.5px}
-  .foot .t{color:var(--teal);font-weight:700}
-  .foot .w2{color:var(--w)}
+  .rec{display:flex;gap:9px;margin-bottom:8px;font-size:11px;line-height:1.42}
+  .rec .no{font-weight:700;color:var(--blue);flex:none;width:16px}
+  .rec b{color:var(--navy)}
+  .rec span{color:var(--gray)}
+  .comb{margin-top:4px;font-size:10.6px;font-weight:600;color:var(--green)}
+  /* roadmap */
+  .rm td{height:24px}
+  .fill{display:inline-block;width:100%;height:9px;border-radius:2px;background:var(--blue);opacity:.75}
+  .fill.g{background:var(--green)} .fill.a{background:var(--amberd)}
+  .foot{flex:none;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line2);
+        margin-top:10px;padding-top:6px;font-size:8.8px;color:var(--faint);line-height:1.4}
+  .foot .pg{font-size:9.5px;color:var(--gray)}
+  .foot b{color:var(--gray)}
 </style></head><body><div class="slide">
 
-  <div class="hdr">
-    <h1>Validated on Jindal’s audited disclosures —<br>and worth <span class="b">₹200–290 crore a year</span> at the EU border by 2030</h1>
-    <div class="badge">VALIDATION · FINANCE · ACTION</div>
+  <div class="titlebar">
+    <h1>Calibrated to Jindal's audited disclosures, the model maps a practical path from <b>1.76 to 1.35–1.45 tCO₂e/t</b> — and verified data protects <b>₹200–290 crore a year</b> of CBAM exposure by 2030</h1>
+    <div class="meta">Round 1 · Executive summary<br>Validation · financials · recommendations</div>
   </div>
+  <div class="rule"></div>
 
   <div class="bandA">
-    <!-- 06 -->
-    <div class="mod" style="flex:1.28">
-      <div class="mh"><div class="mn" style="background:var(--teal)">06</div>
-        <div class="mt">THE CALCULATOR, RUN ON JINDAL’S REALITY</div>
-        <div class="ms">disclosed → optimized · tab 3.1</div></div>
-      <div class="mb">
-        <table class="tt">
-          <tr><th>lever / result</th><th>FY24 peak</th><th>FY26 actual</th><th>FY28–30 optimized</th><th>source</th></tr>
-          <tr><td>Scrap charge</td><td>~60%</td><td>70.1%</td><td>78% (cap 80%)</td><td class="src">BRSR FY26</td></tr>
-          <tr><td>Renewable electricity</td><td>~30%</td><td>47%</td><td>65%</td><td class="src">ESG Factsheet</td></tr>
-          <tr><td>Green H₂ / Bio-LDO</td><td>—</td><td>pilot (Hisar)</td><td>scaled (Jajpur)</td><td class="src">company PR</td></tr>
-          <tr class="kpi"><td>S1+2 intensity (tCO₂e/tcs)</td><td>2.15</td><td style="color:var(--teal)">1.76</td><td style="color:var(--amber)">1.35–1.45</td><td class="src">ESG FS / CDP</td></tr>
-          <tr class="kpi"><td>S3 intensity</td><td>1.90</td><td style="color:var(--teal)">1.27</td><td style="color:var(--amber)">0.95–1.05</td><td class="src">ESG Factsheet</td></tr>
-          <tr class="kpi"><td>Cradle-to-gate total</td><td>4.05</td><td style="color:var(--teal)">3.03</td><td style="color:var(--amber)">≈2.30–2.50</td><td class="src">derived</td></tr>
-        </table>
-        <div class="delta"><b>Δ FY24→FY26:</b> <b class="g">−25.2% total footprint · −18.1% S1+2</b> → glidepath to FY35 target <span class="t">0.99</span> (−50% vs FY22)</div>
-        <div class="note">Every recommended lever is one Jindal is already investing in — ₹700 Cr solar · 300 MW hybrid · H₂ scale-up. The tool ranks them.</div>
-      </div>
+    <div style="flex:1.22;min-width:0">
+      <div class="sec">The model, run on Jindal's disclosed reality</div>
+      <table>
+        <tr><th>Lever / result</th><th>FY24 (peak)</th><th>FY26 (actual)</th><th>FY28–30 (modelled)</th><th>Source</th></tr>
+        <tr><td>Scrap charge</td><td>~60%</td><td>70.1%</td><td>78% (cap 80%)</td><td class="src">BRSR FY26</td></tr>
+        <tr><td>Renewable electricity</td><td>~30%</td><td>47%</td><td>65%</td><td class="src">ESG Factsheet</td></tr>
+        <tr><td>Green H₂ / Bio-LDO</td><td>–</td><td>pilot (Hisar)</td><td>scaled (Jajpur)</td><td class="src">company disclosures</td></tr>
+        <tr class="kpi"><td>Scope 1+2 intensity (tCO₂e/t)</td><td>2.15</td><td class="a">1.76</td><td class="o">1.35–1.45</td><td class="src">ESG Factsheet / CDP</td></tr>
+        <tr class="kpi"><td>Scope 3 intensity</td><td>1.90</td><td class="a">1.27</td><td class="o">0.95–1.05</td><td class="src">ESG Factsheet</td></tr>
+        <tr class="kpi"><td>Cradle-to-gate total</td><td>4.05</td><td class="a">3.03</td><td class="o">≈2.30–2.50</td><td class="src">derived</td></tr>
+      </table>
+      <div class="delta">FY24→FY26 achieved: <b>−25.2% total footprint (−18.1% Scope 1+2)</b>; modelled path stays on the FY35 target glide of <span class="t">0.99</span> (−50% vs FY22 baseline).</div>
+      <div class="noteit">Every modelled lever is one Jindal is already investing in (₹700 Cr solar, 300 MW hybrid, hydrogen scale-up); the tool ranks them by tCO₂ per rupee of effort.</div>
+      <div class="vrow"><b>Validation 1 — audited anchor:</b> model returns 2.8–3.1 for FY26 inputs; the audited 3.03 falls inside.</div>
+      <div class="vrow"><b>Validation 2 — industry curve:</b> results track the worldstainless scrap curve (85% → 1.95; 50% → 3.70; 30% → 6.80).</div>
+      <div class="vrow"><b>Validation 3 — grade physics:</b> nickel-free 430 lands near half the 304 footprint, as metallurgy requires.</div>
     </div>
 
-    <!-- 07 -->
-    <div class="mod" style="flex:1">
-      <div class="mh"><div class="mn" style="background:var(--amber)">07</div>
-        <div class="mt">THE CBAM VERIFICATION DIVIDEND</div>
-        <div class="ms">2030 exposure, €/t exported · fig 3.1</div></div>
-      <div class="mb">
-        <div class="brow"><div class="blab">EU default assigned to India (8.44 t)</div>
-          <div class="bwrap"><div class="bar" style="width:330px;background:var(--red)"></div><span class="bval" style="color:var(--red)">€446</span></div></div>
-        <div class="brow"><div class="blab">India BF-BOF average</div>
-          <div class="bwrap"><div class="bar" style="width:90px;background:var(--brown)"></div><span class="bval" style="color:var(--brown)">€107–122</span></div></div>
-        <div class="brow"><div class="blab"><b>JSL verified — conservative (1.4 t)</b></div>
-          <div class="bwrap"><div class="bar" style="width:55px;background:var(--teal)"></div><span class="bval" style="color:var(--teal)">€74</span></div></div>
-        <div class="brow"><div class="blab"><b>JSL verified — CBAM-direct (0.9 t)</b></div>
-          <div class="bwrap"><div class="bar" style="width:36px;background:var(--green)"></div><span class="bval" style="color:var(--green)">€48</span></div></div>
-        <div class="mech">mechanics: default 6.49 base +30% no-data markup · phase-in 2.5%→48.5% · ETS €80→€109 (EU Regs 2025/2620-21)</div>
-        <div class="hero">
-          <div class="big">₹200–290 Cr / yr <small>(€22–32M)</small></div>
-          <p>€372–398 saved per tonne × 60–80 kt/yr EU export book — earned by filing verified data instead of EU defaults.</p>
-          <p class="t">The calculator IS the MRV instrument that produces the verified number.</p>
-        </div>
+    <div style="flex:1;min-width:0">
+      <div class="sec">What verified data is worth at the EU border (2030)</div>
+      <div class="brow"><div class="blab">EU default assigned to India (8.44 tCO₂/t incl. markup)</div>
+        <div class="bwrap"><div class="bar" style="width:335px;background:var(--red)"></div><span class="bval" style="color:var(--red)">€446/t</span></div></div>
+      <div class="brow"><div class="blab">India BF-BOF average</div>
+        <div class="bwrap"><div class="bar" style="width:92px;background:var(--steel)"></div><span class="bval" style="color:var(--gray)">€107–122</span></div></div>
+      <div class="brow"><div class="blab">Jindal, verified — conservative basis (1.4 t)</div>
+        <div class="bwrap"><div class="bar" style="width:56px;background:var(--blue)"></div><span class="bval" style="color:var(--blue)">€74</span></div></div>
+      <div class="brow"><div class="blab">Jindal, verified — CBAM-direct basis (0.9 t)</div>
+        <div class="bwrap"><div class="bar" style="width:36px;background:var(--green)"></div><span class="bval" style="color:var(--green)">€48</span></div></div>
+      <div class="noteit">Mechanics: default 6.49 base + 30% no-data markup; phase-in 2.5%→48.5%; ETS €80→€109 (EU Regs 2025/2620-21).</div>
+      <div class="hero">
+        <div class="big">₹200–290 crore / year <small>(€22–32M)</small></div>
+        <p>€372–398 saved per tonne × 60–80 kt/yr of EU exports, earned by filing verified plant data instead of accepting EU defaults. The calculator produces exactly this verified figure per tonne.</p>
       </div>
     </div>
   </div>
 
   <div class="bandB">
-    <!-- 08 -->
-    <div class="mod" style="width:395px;flex:none">
-      <div class="mh"><div class="mn" style="background:var(--green)">08</div>
-        <div class="mt">TRIPLE VALIDATION</div><div class="ms">model vs world · fig 3.2</div></div>
-      <div class="mb">
-        <div class="cap">tCO₂/t vs scrap% — worldstainless benchmark curve</div>
-        <div class="chart">
-          <svg width="370" height="108" viewBox="0 0 370 108">
-            <line x1="30" y1="8" x2="30" y2="88" stroke="#333e4b"/>
-            <line x1="30" y1="88" x2="360" y2="88" stroke="#333e4b"/>
-            <polyline points="55,18 156,55 283,70 334,76" fill="none" stroke="#2dd4bf" stroke-width="2"/>
-            <circle cx="55" cy="18" r="3.5" fill="#2dd4bf"/><circle cx="156" cy="55" r="3.5" fill="#2dd4bf"/>
-            <circle cx="283" cy="70" r="3.5" fill="#2dd4bf"/><circle cx="334" cy="76" r="3.5" fill="#2dd4bf"/>
-            <text x="63" y="16" fill="#a4b0bd" font-size="9">6.8</text>
-            <text x="164" y="53" fill="#a4b0bd" font-size="9">3.7</text>
-            <text x="291" y="68" fill="#a4b0bd" font-size="9">2.45</text>
-            <text x="342" y="74" fill="#a4b0bd" font-size="9">1.95</text>
-            <rect x="252.4" y="57.4" width="9" height="9" transform="rotate(45 257 62)" fill="#f5a623" stroke="#fff" stroke-width="1"/>
-            <text x="257" y="80" text-anchor="middle" fill="#f5a623" font-size="9.5" font-weight="700">▴ JSL 3.03 @ 70%</text>
-            <text x="55" y="102" text-anchor="middle" fill="#6b7683" font-size="8.5">30%</text>
-            <text x="156" y="102" text-anchor="middle" fill="#6b7683" font-size="8.5">50%</text>
-            <text x="283" y="102" text-anchor="middle" fill="#6b7683" font-size="8.5">75%</text>
-            <text x="334" y="102" text-anchor="middle" fill="#6b7683" font-size="8.5">85%</text>
-          </svg>
-        </div>
-        <div class="vrow"><div class="vbar"></div><b>V1 audited anchor</b><span>model predicts 2.8–3.1 · JSL’s audited 3.03 lands inside</span></div>
-        <div class="vrow"><div class="vbar"></div><b>V2 industry curve</b><span>JSL point sits on the ISSF benchmark line (chart above)</span></div>
-        <div class="vrow"><div class="vbar"></div><b>V3 grade physics</b><span>Ni-free 430 ≈ half the 304 footprint — correctly reproduced</span></div>
-      </div>
+    <div style="flex:1.22;min-width:0">
+      <div class="sec">Initial recommendations</div>
+      <div class="rec"><div class="no">1.</div><div><b>Operations:</b> <span>raise scrap 70→78% within the 80% tramp-element guardrail; deploy XRF/LIBS sensor sorting to secure clean feed.</span></div></div>
+      <div class="rec"><div class="no">2.</div><div><b>Operations:</b> <span>lift renewables 47→65% via the 300 MW hybrid; captive coal at 1.045 t/MWh is the second-largest lever.</span></div></div>
+      <div class="rec"><div class="no">3.</div><div><b>Finance:</b> <span>file verified MRV data with EU importers — a €372–398/t saving vs defaults; the tool generates the per-tonne statement.</span></div></div>
+      <div class="rec"><div class="no">4.</div><div><b>Sales:</b> <span>attach a carbon statement to every EU order; CPR GWP declarations are mandatory since Jan 2026 and the Digital Product Passport follows ~2028.</span></div></div>
+      <div class="comb">Combined effect: Scope 1+2 falls to 1.35–1.45 by FY28-30 — on track for the FY35 −50% target.</div>
     </div>
-
-    <!-- 09 -->
-    <div class="mod" style="flex:1">
-      <div class="mh"><div class="mn" style="background:var(--amber)">09</div>
-        <div class="mt">INITIAL RECOMMENDATIONS</div><div class="ms">R1–R4, priced and owned</div></div>
-      <div class="mb" style="display:flex;flex-direction:column">
-        <div class="rec"><div class="rn" style="border-color:var(--teal);color:var(--teal)">R1</div>
-          <p><b style="color:var(--teal)">OPS</b> Push scrap 70→78% inside the 80% guardrail; deploy sensor-sorting to secure tramp-free feed.</p></div>
-        <div class="rec"><div class="rn" style="border-color:var(--amber);color:var(--amber)">R2</div>
-          <p><b style="color:var(--amber)">OPS</b> Lift renewables 47→65% via the 300 MW hybrid — captive coal at 1.045 t/MWh is the #2 lever.</p></div>
-        <div class="rec"><div class="rn" style="border-color:var(--green);color:var(--green)">R3</div>
-          <p><b style="color:var(--green)">CFO</b> File verified MRV data with EU importers — €372–398/t dividend vs defaults; the tool generates the filing.</p></div>
-        <div class="rec"><div class="rn" style="border-color:var(--blue);color:var(--blue)">R4</div>
-          <p><b style="color:var(--blue)">SALES</b> Ship a carbon certificate with every EU order — CPR GWP mandatory since Jan 2026; DPP lands ~2028.</p></div>
-        <div class="combined" style="margin-top:auto">Combined effect: S1+2 → 1.35–1.45 by FY28-30 · on-track for FY35 −50% target.</div>
-      </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="mod" style="width:330px;flex:none">
-      <div class="mh"><div class="mn" style="background:var(--blue)">10</div>
-        <div class="mt">DEPLOYMENT ROADMAP</div><div class="ms">fig 3.3</div></div>
-      <div class="mb"><div class="gantt">
-        <div class="grow" style="height:16px">
-          <div></div><div class="ghead">FY26</div><div class="ghead">FY27</div><div class="ghead">FY28</div><div class="ghead">FY29</div><div class="ghead">FY30</div>
-        </div>
-        <div class="grow"><div class="gname">Live calculator</div>
-          <div class="gcell"><div class="gbar2" style="left:8%;width:84%;background:var(--teal)"></div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
-        <div class="grow"><div class="gname">Verified CBAM filing</div>
-          <div class="gcell"><div class="gbar2" style="left:8%;width:92%;background:var(--green)"></div></div><div class="gcell"><div class="gbar2" style="left:0;width:92%;background:var(--green)"></div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
-        <div class="grow"><div class="gname">AI scrap sorting</div>
-          <div class="gcell"></div><div class="gcell"><div class="gbar2" style="left:8%;width:92%;background:var(--amber)"></div></div><div class="gcell"><div class="gbar2" style="left:0;width:92%;background:var(--amber)"></div></div><div class="gcell"></div><div class="gcell"></div></div>
-        <div class="grow"><div class="gname">Biochar · slag→SCM</div>
-          <div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="gbar2" style="left:8%;width:92%;background:var(--amber)"></div></div><div class="gcell"><div class="gbar2" style="left:0;width:92%;background:var(--amber)"></div></div><div class="gcell"></div></div>
-        <div class="grow"><div class="gname">Auto-DPP per heat</div>
-          <div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="gbar2" style="left:8%;width:92%;background:var(--blue)"></div></div><div class="gcell"><div class="gbar2" style="left:0;width:92%;background:var(--blue)"></div></div></div>
-        <div class="gnote">Abatement cost: sorting $30–43 · biochar $29–45 per tCO₂ — every step beats the 2030 CBAM price of €109.</div>
-      </div></div>
+    <div style="flex:1;min-width:0">
+      <div class="sec">Deployment roadmap</div>
+      <table class="rm">
+        <tr><th style="text-align:left">Initiative</th><th>FY26</th><th>FY27</th><th>FY28</th><th>FY29</th><th>FY30</th></tr>
+        <tr><td>Calculator live; verified CBAM filing</td><td><span class="fill g"></span></td><td><span class="fill g"></span></td><td></td><td></td><td></td></tr>
+        <tr><td>AI scrap sorting (raise the 80% ceiling)</td><td></td><td><span class="fill"></span></td><td><span class="fill"></span></td><td></td><td></td></tr>
+        <tr><td>Biochar in ferrochrome; slag to cement</td><td></td><td></td><td><span class="fill a"></span></td><td><span class="fill a"></span></td><td></td></tr>
+        <tr><td>Product passport per heat (EU DPP)</td><td></td><td></td><td></td><td><span class="fill"></span></td><td><span class="fill"></span></td></tr>
+      </table>
+      <div class="noteit" style="margin-top:6px">Abatement economics: sorting $30–43 and biochar $29–45 per tCO₂ — both below the 2030 CBAM price of €109/tCO₂.</div>
     </div>
   </div>
 
-  <div class="foot"><b>EVIDENCE TRAIL</b>&nbsp; every figure traces to a locked canonical model over 19 research files — factors (CEA v21.0 · BEE PAT · IPCC 2006 · ICDA) · methodology (ISSF/worldstainless · ISO 14404) · actuals (JSL BRSR · CDP · ESG FY22–26) · regulation (EU 2023/956 · 2025/2620-21 · CPR 2024/3110 · ESPR 2024/1781) · finance (Goldman Sachs · ICRA · CRISIL · GTRI)<br>
-  <span class="t">ACCOMPANYING THIS SUMMARY:</span> <span class="w2">live web calculator [ADD LINK] · full sourced research appendix [ADD LINK]</span></div>
+  <div class="foot">
+    <div>Source: JSL ESG Factsheets, BRSR, CDP FY22–26; EU Regulations 2023/956, 2025/2620-21, 2026/1740; CEA v21.0; worldstainless/ISSF; ICDA; Goldman Sachs, ICRA, CRISIL analyst reports; team analysis.&nbsp;&nbsp;<b>Live prototype:</b> claude.ai/code/artifact/26dfac21-9e56-4bc5-8219-61f69d70e029</div>
+    <div class="pg">2</div>
+  </div>
 
 </div></body></html>
